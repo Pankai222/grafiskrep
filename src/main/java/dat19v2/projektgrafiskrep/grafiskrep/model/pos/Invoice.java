@@ -1,28 +1,18 @@
-package dat19v2.projektgrafiskrep.grafiskrep.model;
-
+package dat19v2.projektgrafiskrep.grafiskrep.model.pos;
 import java.time.LocalDate;
 
 public class Invoice {
 
-    private Order orderInfo;
     private String paymentInfo;
     private LocalDate paymentDate;
+
 
     public Invoice() {
     }
 
-    public Invoice(Order orderInfo, String paymentInfo, LocalDate paymentDate) {
-        this.orderInfo = orderInfo;
+    public Invoice(String paymentInfo, LocalDate paymentDate) {
         this.paymentInfo = paymentInfo;
         this.paymentDate = paymentDate;
-    }
-
-    public Order getOrderInfo() {
-        return orderInfo;
-    }
-
-    public void setOrderInfo(Order orderInfo) {
-        this.orderInfo = orderInfo;
     }
 
     public String getPaymentInfo() {

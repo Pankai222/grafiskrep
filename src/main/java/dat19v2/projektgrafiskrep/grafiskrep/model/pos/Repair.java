@@ -1,4 +1,7 @@
-package dat19v2.projektgrafiskrep.grafiskrep.model;
+package dat19v2.projektgrafiskrep.grafiskrep.model.pos;
+
+import dat19v2.projektgrafiskrep.grafiskrep.model.Machine;
+import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
 
 import java.util.List;
 
@@ -12,10 +15,19 @@ public class Repair {
     }
 
     public Repair(int price, RepairType type, Machine machine, List<MachinePart> parts) {
-        this.price = price;
         this.type = type;
         this.machine = machine;
         this.parts = parts;
+        this.price = calcPrice();
+    }
+
+    private int calcPrice(){
+        int partTotalPrice = 0;
+        for (MachinePart part:
+             parts) {
+            partTotalPrice =+ part.getPrice();
+        }
+        return type.getPrice() + partTotalPrice;
     }
 
     public int getPrice() {
