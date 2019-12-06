@@ -387,6 +387,7 @@ h3, .h3 {
 
 h4, .h4 {
   font-size: 1.5rem;
+  color: #1abc9c;
 }
 
 h5, .h5 {
@@ -4591,7 +4592,7 @@ input[type="button"].btn-block {
 }
 
 .page-content {
-  padding-top: 10%;
+  padding-top: 7rem;
 }
 
 .page-link {
