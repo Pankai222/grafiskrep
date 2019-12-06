@@ -9,23 +9,17 @@ public class DatabaseAdapter {
     private static Connection con;
 
     // defining settings for connection to GrafiskRepDB
-    String username = "root";
-    String password = "rootkode";
+    static final String username = "root";
+    static final String password = "rootkode";
     //database-url including changing of timezone to UTC
-    String url = "jdbc:mysql://localhost:3306/GrafiskRep?useUnicode=true" +
+    static final String url = "jdbc:mysql://localhost:3306/GrafiskRep?useUnicode=true" +
             "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
-    // for initializing databaseAdapter with connection
-    public DatabaseAdapter(){
-        try {
-            System.out.println("Connected to GrafiskRepDB");
-            con = DriverManager.getConnection(url, username, password);
-        } catch (SQLException e) {
-            System.out.println("Error: " + e);
-        }
-    }
+    public DatabaseAdapter(){}
 
-    public static Connection getConnection() {
+    public static Connection getConnection() throws Exception {
+        con = DriverManager.getConnection(url, username, password);
+        System.out.println("Connected to database. User = " + username);
         return con;
     }
 }
