@@ -9852,3 +9852,8 @@ form .row:first-child .floating-label-form-group {
 .copyright {
   background-color: #1a252f;
 }
+
+.GrafiskRep-header-logo {
+  max-width: 15%;
+  height: auto;
+}
