@@ -23,10 +23,10 @@ public class CustomerDAO {
         } catch (SQLException e) {
             System.out.println("Error: " + e);
         }
-
+        return customers;
     }
     public void insert() {
-        String sql = "SELECT "
+        String sql = "SELECT ";
     }
 
 
