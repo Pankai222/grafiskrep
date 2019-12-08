@@ -11,7 +11,8 @@ import java.util.List;
 
 
 public class CustomerDAO {
-// Selecting all content from table and adding to customers arraylist via query resultset
+
+    // Selecting all content from table and adding to customers arraylist via query resultset
     public List<Customer> selectAll() {
         List<Customer> customers = new ArrayList<>();
         String sql = "SELECT * FROM customers";
@@ -68,7 +69,7 @@ public class CustomerDAO {
             System.out.println("Error: " + e);
         }
     }
-
+    // Doesn't work as intended yet..
     public void update(String string2, String string3) {
         String sql = "UPDATE customers " +
                 "SET Name = ? " +
@@ -84,14 +85,22 @@ public class CustomerDAO {
         }
     }
 
-    public void select(String string) {
+    public void select() {
         String sql = "SELECT CVR, Name, Address, Phone, Email FROM customers WHERE CVR = ?";
 
         try (Connection con =
                 DatabaseAdapter.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, string);
-            ps.executeUpdate();
+            PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            ps.setString(7, "12345");
+            while (rs.next()) {
+                String CVR = rs.getString("CVR");
+                String Name = rs.getString("Name");
+                String Address = rs.getString("Address");
+                String Phone = rs.getString("Phone");
+                String Email = rs.getString("Email");
+                System.out.format("%s,%s,%s,%s,%s\n", CVR, Name, Address, Phone, Email);
+            }
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }
