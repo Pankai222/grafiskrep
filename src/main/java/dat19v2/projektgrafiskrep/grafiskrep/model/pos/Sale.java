@@ -2,50 +2,59 @@ package dat19v2.projektgrafiskrep.grafiskrep.model.pos;
 
 import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sale {
-    private Date date;
-    private int total;
-    private List<MachinePart> items;
+    private LocalDateTime date;
+    private int totalPrice;
+    private ArrayList<MachinePart> items;
 
     public Sale() {
+        this.items = new ArrayList<>();
     }
 
-    public Sale(Date date, int total, List<MachinePart> items) {
-        this.date = date;
-        this.total = total;
+    public Sale(int totalPrice, ArrayList<MachinePart> items) {
         this.items = items;
+        this.totalPrice = totalPrice;
     }
 
-    public java.sql.Date convertDate() {
-        java.util.Date date = new java.util.Date();
-        return new java.sql.Date(date.getTime());
-    }
+//    Code written for using DATETIME in SQL Database.
+//    public LocalDateTime convertDate() {
+//        java.util.Date date = new java.util.Date();
+//        System.out.println(new java.sql.Date(date.getTime()));
+//        return new java.sql.Date(date.getTime());
+//    }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
-    public int getTotal() {
-        return total;
+    public int getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
+    public void calcTotalPrice(){
+        for (MachinePart part:
+                items) {
+            totalPrice =+ part.getPrice();
+        }
+    }
     public List<MachinePart> getItems() {
         return items;
     }
 
-    public void setItems(List<MachinePart> items) {
+    public void setItems(ArrayList<MachinePart> items) {
         this.items = items;
     }
+
 }

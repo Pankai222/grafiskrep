@@ -3,18 +3,19 @@ package dat19v2.projektgrafiskrep.grafiskrep.model.pos;
 import dat19v2.projektgrafiskrep.grafiskrep.model.Machine;
 import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Repair {
     private int price;
     private RepairType type;
     private Machine machine;
-    private List<MachinePart> parts;
+    private ArrayList<MachinePart> parts;
 
     public Repair() {
     }
 
-    public Repair(int price, RepairType type, Machine machine, List<MachinePart> parts) {
+    public Repair(int price, RepairType type, Machine machine, ArrayList<MachinePart> parts) {
         this.type = type;
         this.machine = machine;
         this.parts = parts;
@@ -58,7 +59,7 @@ public class Repair {
         return parts;
     }
 
-    public void setParts(List<MachinePart> parts) {
+    public void setParts(ArrayList<MachinePart> parts) {
         this.parts = parts;
     }
 }

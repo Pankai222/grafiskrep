@@ -11,7 +11,7 @@ public class DatabaseAdapter {
     // defining settings for connection to GrafiskRepDB
     static final String username = "root";
     static final String password = "rootkode";
-    //database-url including changing of timezone to UTC
+    //database-url including changing of timezone t/-=-o UTC
     static final String url = "jdbc:mysql://localhost:3306/GrafiskRep?useUnicode=true" +
             "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 

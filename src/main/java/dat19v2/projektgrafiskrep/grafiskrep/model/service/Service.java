@@ -3,28 +3,29 @@ package dat19v2.projektgrafiskrep.grafiskrep.model.service;
 import dat19v2.projektgrafiskrep.grafiskrep.model.Machine;
 import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Service {
-    private LocalDate date;
+    private LocalDateTime date;
     private Machine machine;
-    private List<MachinePart> machineParts;
+    private ArrayList<MachinePart> machineParts;
 
     public Service() {
     }
 
-    public Service(LocalDate date, Machine machine, List<MachinePart> machineParts) {
+    public Service(LocalDateTime date, Machine machine, ArrayList<MachinePart> machineParts) {
         this.date = date;
         this.machine = machine;
         this.machineParts = machineParts;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
@@ -40,7 +41,7 @@ public class Service {
         return machineParts;
     }
 
-    public void setMachineParts(List<MachinePart> machineParts) {
+    public void setMachineParts(ArrayList<MachinePart> machineParts) {
         this.machineParts = machineParts;
     }
 }

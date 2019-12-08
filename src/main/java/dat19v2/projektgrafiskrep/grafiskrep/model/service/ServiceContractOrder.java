@@ -1,15 +1,15 @@
 package dat19v2.projektgrafiskrep.grafiskrep.model.service;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ServiceContractOrder {
     private ServiceContract serviceContract;
-    private LocalDate date;
+    private LocalDateTime date;
 
     public ServiceContractOrder() {
     }
 
-    public ServiceContractOrder(ServiceContract serviceContract, LocalDate orderDate) {
+    public ServiceContractOrder(ServiceContract serviceContract, LocalDateTime orderDate) {
         this.serviceContract = serviceContract;
         this.date = orderDate;
     }
@@ -22,11 +22,11 @@ public class ServiceContractOrder {
         this.serviceContract = serviceContract;
     }
 
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }

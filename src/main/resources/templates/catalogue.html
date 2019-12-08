@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -21,21 +21,23 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
   <div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="#page-top">Grafisk Rep</a>
+    <a href="index" class="nav-link py-3 px-0 px-lg-3 rounded">
+      <img class="GrafiskRep-header-logo" src="img/Logo/grafiskreplogoheader.png" alt="">
+    </a>
     <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       Menu
       <i class="fas fa-bars"></i>
     </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
+    <div class="collapse navbar-collapse">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item mx-0 mx-lg-1">
-          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/catalogue">Maskiner</a>
+          <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/catalogue">Køb Reservedele</a>
         </li>
         <li class="nav-item mx-0 mx-lg-1">
-          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/about">Om mig</a>
+          <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/about">Om mig</a>
         </li>
         <li class="nav-item mx-0 mx-lg-1">
-          <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/contact">Kontakt</a>
+          <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/contact">Kontakt</a>
         </li>
       </ul>
     </div>
@@ -50,11 +52,20 @@
       <div class="col-lg-3">
 
         <h1 class="my-4">Køb Reservedele</h1>
-        <div class="list-group">
+        <div class="list-group mb-4">
           <a href="#" class="list-group-item">{thymeleaf.machine.name}</a>
           <a href="#" class="list-group-item">{thymeleaf.machine.name}</a>
           <a href="#" class="list-group-item">{thymeleaf.machine.name}</a>
           <a href="#" class="list-group-item">{thymeleaf.machine.name}</a>
+        </div>
+
+        <div class="card h-auto mb-4">
+          <div class="card-body">
+            <h4 class="card-header">Kurv</h4>
+            <p class="card-text">Antal: </p> <p class="card-text" th:text="${sale.getItems().size()}"></p>
+            <p class="card-text">Total: </p> <p class="card-text" th:text="${sale.getTotalPrice()}"></p>
+            <button class="btn btn-sm btn-outline-dark">Til Kassen</button>
+          </div>
         </div>
 
       </div>
@@ -68,11 +79,43 @@
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
-                <h4 class="card-title">
-                  <h4>{thymeleaf.part.name}</h4>
-                </h4>
-                <h5>{thymeleaf.price}</h5>
-                <p class="card-text">{thymeleaf.description}</p>
+                  <h4 class="card-title" th:text="${catalogue.getItems().get(0).getName()}"></h4>
+                  <p class="text-sm-left" th:text="${catalogue.getItems().get(0).getPartNr()}"></p>
+                <h5 th:text="${catalogue.getItems().get(0).getPrice()}"></h5>
+                <p class="card-text" th:text="${catalogue.getItems().get(0).getDesc()}"></p>
+              </div>
+              <div class="card-footer">
+                <form action="#" th:action="@{/add-to-cart}" th:object="${catalogue}" method="post">
+                  <input hidden="true" name="machinePart" th:value="${catalogue.getItems().get(0)}">
+                  <button class="btn btn-sm btn-outline-dark" type="submit">Tilføj til kurv</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <div class="card-body">
+                  <h4 class="card-title" th:text="${catalogue.getItems().get(1).getName()}"></h4>
+                  <p class="text-sm-left" th:text="${catalogue.getItems().get(1).getPartNr()}"></p>
+                <h5 th:text="${catalogue.getItems().get(1).getPrice()}"></h5>
+                <p class="card-text" th:text="${catalogue.getItems().get(1).getDesc()}"></p>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-sm btn-outline-dark" type="submit">Tilføj til kurv</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+              <div class="card-body">
+                  <h4 class="card-title" th:text="${catalogue.getItems().get(2).getName()}"></h4>
+                  <p class="text-sm-left" th:text="${catalogue.getItems().get(2).getPartNr()}"></p>
+                <h5 th:text="${catalogue.getItems().get(2).getPrice()}"></h5>
+                <p class="card-text" th:text="${catalogue.getItems().get(2).getDesc()}"></p>
               </div>
               <div class="card-footer">
                 <button class="btn btn-sm btn-outline-dark">Tilføj til kurv</button>
@@ -84,11 +127,10 @@
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
-                <h4 class="card-title">
-                  <h4>{thymeleaf.part.name}</h4>
-                </h4>
-                <h5>{thymeleaf.price}</h5>
-                <p class="card-text">{thymeleaf.description} Lorem ipsum dolor sit amet.</p>
+                  <h4 class="card-title" th:text="${catalogue.getItems().get(3).getName()}"></h4>
+                  <p class="text-sm-left" th:text="${catalogue.getItems().get(3).getPartNr()}"></p>
+                <h5 th:text="${catalogue.getItems().get(3).getPrice()}"></h5>
+                <p class="card-text" th:text="${catalogue.getItems().get(3).getDesc()}"></p>
               </div>
               <div class="card-footer">
                 <button class="btn btn-sm btn-outline-dark">Tilføj til kurv</button>
@@ -100,11 +142,10 @@
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
-                <h4 class="card-title">
-                  <h4>{thymeleaf.part.name}</h4>
-                </h4>
-                <h5>{thymeleaf.price}</h5>
-                <p class="card-text">{thymeleaf.description}</p>
+                  <h4 class="card-title" th:text="${catalogue.getItems().get(4).getName()}"></h4>
+                  <p class="text-sm-left" th:text="${catalogue.getItems().get(5).getPartNr()}"></p>
+                <h5 th:text="${catalogue.getItems().get(4).getPrice()}"></h5>
+                <p class="card-text" th:text="${catalogue.getItems().get(4).getDesc()}"></p>
               </div>
               <div class="card-footer">
                 <button class="btn btn-sm btn-outline-dark">Tilføj til kurv</button>
@@ -116,43 +157,10 @@
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
-                <h4 class="card-title">
-                  <h4>{thymeleaf.part.name}</h4>
-                </h4>
-                <h5>{thymeleaf.price}</h5>
-                <p class="card-text">{thymeleaf.description}</p>
-              </div>
-              <div class="card-footer">
-                <button class="btn btn-sm btn-outline-dark">Tilføj til kurv</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <h4>{thymeleaf.part.name}</h4>
-                </h4>
-                <h5>{thymeleaf.price}</h5>
-                <p class="card-text">{thymeleaf.description} Lorem ipsum dolor sit amet.</p>
-              </div>
-              <div class="card-footer">
-                <button class="btn btn-sm btn-outline-dark">Tilføj til kurv</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <h4>{thymeleaf.part.name}</h4>
-                </h4>
-                <h5>{thymeleaf.price}</h5>
-                <p class="card-text">{thymeleaf.description}</p>
+                  <h4 class="card-title" th:text="${catalogue.getItems().get(5).getName()}"></h4>
+                  <p class="text-sm-left" th:text="${catalogue.getItems().get(5).getPartNr()}"></p>
+                <h5 th:text="${catalogue.getItems().get(5).getPrice()}"></h5>
+                <p class="card-text" th:text="${catalogue.getItems().get(5).getDesc()}"></p>
               </div>
               <div class="card-footer">
                 <button class="btn btn-sm btn-outline-dark">Tilføj til kurv</button>

@@ -58,4 +58,15 @@ public class MachinePart {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "MachinePart{" +
+                "name='" + name + '\'' +
+                ", brand='" + brand + '\'' +
+                ", partNr='" + partNr + '\'' +
+                ", desc='" + desc + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
