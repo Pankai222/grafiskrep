@@ -25,6 +25,8 @@ public class CatalogueController {
         catalogue.getItems().add(new MachinePart("Part 5", "Brand 5", "PartNr 5", "Description 5", 6969));
         catalogue.getItems().add(new MachinePart("Part 6", "Brand 6", "PartNr 6", "Description 6", 6969));
 //        End of No DB code
+
+//        Adding to model for thymeleaf and httpSession for use in other methods.
         httpSession.setAttribute("sale", new Sale());
         httpSession.setAttribute("catalogue", catalogue);
         model.addAttribute("catalogue", catalogue);
@@ -33,8 +35,16 @@ public class CatalogueController {
     }
 
     @PostMapping ("add-to-cart")
-    public String addToCart(Model model, HttpSession httpSession, String partNr){
-        return null;
+    public String addToCart(Model model, HttpSession httpSession, MachinePart machinePart){
+//        TODO Faa action til at sende et machinePart thymeleaf object tilbage fra html
+        System.out.println(machinePart.toString());
+        Sale sale = (Sale) httpSession.getAttribute("sale");
+        sale.getItems().add(machinePart);
+        sale.calcTotalPrice();
+        model.addAttribute("sale", sale);
+        model.addAttribute("catalogue", httpSession.getAttribute("catalogue"));
+        httpSession.setAttribute("sale", sale);
+        return "catalogue";
     }
 }
 

@@ -8,15 +8,16 @@ import java.util.List;
 
 public class Sale {
     private LocalDateTime date;
-    private int total;
+    private int totalPrice;
     private ArrayList<MachinePart> items;
 
     public Sale() {
+        this.items = new ArrayList<>();
     }
 
-    public Sale(int total, ArrayList<MachinePart> items) {
-        this.total = total;
+    public Sale(int totalPrice, ArrayList<MachinePart> items) {
         this.items = items;
+        this.totalPrice = totalPrice;
     }
 
 //    Code written for using DATETIME in SQL Database.
@@ -34,14 +35,20 @@ public class Sale {
         this.date = date;
     }
 
-    public int getTotal() {
-        return total;
+    public int getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
+    public void setTotalPrice(int totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
+    public void calcTotalPrice(){
+        for (MachinePart part:
+                items) {
+            totalPrice =+ part.getPrice();
+        }
+    }
     public List<MachinePart> getItems() {
         return items;
     }

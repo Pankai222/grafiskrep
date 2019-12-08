@@ -17,7 +17,7 @@ public class SaleDAO {
 //        {
 //
 //            ps.setDate(1,sale.convertDate());
-//            ps.setInt(2,sale.getTotal());
+//            ps.setInt(2,sale.getTotalPrice());
 //            ps.executeUpdate();
 //
 //        } catch (Exception e) {

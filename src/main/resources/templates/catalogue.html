@@ -52,11 +52,20 @@
       <div class="col-lg-3">
 
         <h1 class="my-4">Køb Reservedele</h1>
-        <div class="list-group">
+        <div class="list-group mb-4">
           <a href="#" class="list-group-item">{thymeleaf.machine.name}</a>
           <a href="#" class="list-group-item">{thymeleaf.machine.name}</a>
           <a href="#" class="list-group-item">{thymeleaf.machine.name}</a>
           <a href="#" class="list-group-item">{thymeleaf.machine.name}</a>
+        </div>
+
+        <div class="card h-auto mb-4">
+          <div class="card-body">
+            <h4 class="card-header">Kurv</h4>
+            <p class="card-text">Antal: </p> <p class="card-text" th:text="${sale.getItems().size()}"></p>
+            <p class="card-text">Total: </p> <p class="card-text" th:text="${sale.getTotalPrice()}"></p>
+            <button class="btn btn-sm btn-outline-dark">Til Kassen</button>
+          </div>
         </div>
 
       </div>
@@ -70,15 +79,16 @@
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
-                <h4 class="card-title">
-                  <h4 th:text="${catalogue.getItems().get(0).getName()}"></h4>
+                  <h4 class="card-title" th:text="${catalogue.getItems().get(0).getName()}"></h4>
                   <p class="text-sm-left" th:text="${catalogue.getItems().get(0).getPartNr()}"></p>
-                </h4>
                 <h5 th:text="${catalogue.getItems().get(0).getPrice()}"></h5>
                 <p class="card-text" th:text="${catalogue.getItems().get(0).getDesc()}"></p>
               </div>
               <div class="card-footer">
-                <button class="btn btn-sm btn-outline-dark">Tilføj til kurv</button>
+                <form action="#" th:action="@{/add-to-cart}" th:object="${catalogue}" method="post">
+                  <input hidden="true" name="machinePart" th:value="${catalogue.getItems().get(0)}">
+                  <button class="btn btn-sm btn-outline-dark" type="submit">Tilføj til kurv</button>
+                </form>
               </div>
             </div>
           </div>
@@ -87,10 +97,8 @@
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
-                <h4 class="card-title">
-                  <h4 th:text="${catalogue.getItems().get(1).getName()}"></h4>
+                  <h4 class="card-title" th:text="${catalogue.getItems().get(1).getName()}"></h4>
                   <p class="text-sm-left" th:text="${catalogue.getItems().get(1).getPartNr()}"></p>
-                </h4>
                 <h5 th:text="${catalogue.getItems().get(1).getPrice()}"></h5>
                 <p class="card-text" th:text="${catalogue.getItems().get(1).getDesc()}"></p>
               </div>
@@ -104,10 +112,8 @@
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
-                <h4 class="card-title">
-                  <h4 th:text="${catalogue.getItems().get(2).getName()}"></h4>
+                  <h4 class="card-title" th:text="${catalogue.getItems().get(2).getName()}"></h4>
                   <p class="text-sm-left" th:text="${catalogue.getItems().get(2).getPartNr()}"></p>
-                </h4>
                 <h5 th:text="${catalogue.getItems().get(2).getPrice()}"></h5>
                 <p class="card-text" th:text="${catalogue.getItems().get(2).getDesc()}"></p>
               </div>
@@ -121,10 +127,8 @@
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
-                <h4 class="card-title">
-                  <h4 th:text="${catalogue.getItems().get(3).getName()}"></h4>
+                  <h4 class="card-title" th:text="${catalogue.getItems().get(3).getName()}"></h4>
                   <p class="text-sm-left" th:text="${catalogue.getItems().get(3).getPartNr()}"></p>
-                </h4>
                 <h5 th:text="${catalogue.getItems().get(3).getPrice()}"></h5>
                 <p class="card-text" th:text="${catalogue.getItems().get(3).getDesc()}"></p>
               </div>
@@ -138,10 +142,8 @@
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
-                <h4 class="card-title">
-                  <h4 th:text="${catalogue.getItems().get(4).getName()}"></h4>
+                  <h4 class="card-title" th:text="${catalogue.getItems().get(4).getName()}"></h4>
                   <p class="text-sm-left" th:text="${catalogue.getItems().get(5).getPartNr()}"></p>
-                </h4>
                 <h5 th:text="${catalogue.getItems().get(4).getPrice()}"></h5>
                 <p class="card-text" th:text="${catalogue.getItems().get(4).getDesc()}"></p>
               </div>
@@ -155,10 +157,8 @@
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
-                <h4 class="card-title">
-                  <h4 th:text="${catalogue.getItems().get(5).getName()}"></h4>
+                  <h4 class="card-title" th:text="${catalogue.getItems().get(5).getName()}"></h4>
                   <p class="text-sm-left" th:text="${catalogue.getItems().get(5).getPartNr()}"></p>
-                </h4>
                 <h5 th:text="${catalogue.getItems().get(5).getPrice()}"></h5>
                 <p class="card-text" th:text="${catalogue.getItems().get(5).getDesc()}"></p>
               </div>
