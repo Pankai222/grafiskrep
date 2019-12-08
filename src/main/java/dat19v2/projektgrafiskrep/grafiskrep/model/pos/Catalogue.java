@@ -2,12 +2,18 @@ package dat19v2.projektgrafiskrep.grafiskrep.model.pos;
 
 import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Catalogue {
-    private List<MachinePart> items;
+    private ArrayList<MachinePart> items;
 
-    public Catalogue(List<MachinePart> items) {
+
+    public Catalogue() {
+        items = new ArrayList<MachinePart>();
+    }
+
+    public Catalogue(ArrayList<MachinePart> items) {
         this.items = items;
     }
 
@@ -15,7 +21,7 @@ public class Catalogue {
         return items;
     }
 
-    public void setItems(List<MachinePart> items) {
+    public void setItems(ArrayList<MachinePart> items) {
         this.items = items;
     }
 }

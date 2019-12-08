@@ -7,20 +7,21 @@ import java.sql.PreparedStatement;
 
 public class SaleDAO {
 
-    public void insert(Sale sale) {
-        String sql = "INSERT INTO sales" + "(Date, TotalPrice)" +
-                "VALUES (?,?)";
-        try (Connection con =
-                     DatabaseAdapter.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql))
-        {
-
-            ps.setDate(1,sale.convertDate());
-            ps.setInt(2,sale.getTotal());
-            ps.executeUpdate();
-
-        } catch (Exception e) {
-            System.out.println("Err0r: " + e);
-        }
-    }
+    //    TODO Fix date issue
+//    public void insert(Sale sale) {
+//        String sql = "INSERT INTO sales" + "(Date, TotalPrice)" +
+//                "VALUES (?,?)";
+//        try (Connection con =
+//                     DatabaseAdapter.getConnection();
+//             PreparedStatement ps = con.prepareStatement(sql))
+//        {
+//
+//            ps.setDate(1,sale.convertDate());
+//            ps.setInt(2,sale.getTotal());
+//            ps.executeUpdate();
+//
+//        } catch (Exception e) {
+//            System.out.println("Err0r: " + e);
+//        }
+//    }
 }

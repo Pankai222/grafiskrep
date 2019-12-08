@@ -3,17 +3,18 @@ package dat19v2.projektgrafiskrep.grafiskrep.model.pos;
 import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sale {
     private LocalDateTime date;
     private int total;
-    private List<MachinePart> items;
+    private ArrayList<MachinePart> items;
 
     public Sale() {
     }
 
-    public Sale(int total, List<MachinePart> items) {
+    public Sale(int total, ArrayList<MachinePart> items) {
         this.total = total;
         this.items = items;
     }
@@ -45,7 +46,7 @@ public class Sale {
         return items;
     }
 
-    public void setItems(List<MachinePart> items) {
+    public void setItems(ArrayList<MachinePart> items) {
         this.items = items;
     }
 

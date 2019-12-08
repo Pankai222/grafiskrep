@@ -1,12 +1,14 @@
 package dat19v2.projektgrafiskrep.grafiskrep.model.service;
 
 import dat19v2.projektgrafiskrep.grafiskrep.model.Customer;
+import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceContract {
-    private List<Service> services;
+    private ArrayList<MachinePart> services;
     private Customer customer;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
@@ -14,18 +16,18 @@ public class ServiceContract {
     public ServiceContract() {
     }
 
-    public ServiceContract(List<Service> services, Customer customer, LocalDateTime startDate, LocalDateTime endDate) {
+    public ServiceContract(ArrayList<MachinePart> services, Customer customer, LocalDateTime startDate, LocalDateTime endDate) {
         this.services = services;
         this.customer = customer;
         this.startDate = startDate;
         this.endDate = endDate;
     }
 
-    public List<Service> getServices() {
+    public List<MachinePart> getServices() {
         return services;
     }
 
-    public void setServices(List<Service> services) {
+    public void setServices(ArrayList<MachinePart> services) {
         this.services = services;
     }
 
