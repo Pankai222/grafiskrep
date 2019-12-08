@@ -33,7 +33,7 @@ public class CatalogueController {
     }
 
     @PostMapping ("add-to-cart")
-    public String addToCart(Model model, HttpSession httpSession){
+    public String addToCart(Model model, HttpSession httpSession, String partNr){
         return null;
     }
 }
