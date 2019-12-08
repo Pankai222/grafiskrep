@@ -2,19 +2,19 @@ package dat19v2.projektgrafiskrep.grafiskrep.model.service;
 
 import dat19v2.projektgrafiskrep.grafiskrep.model.Customer;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class ServiceContract {
     private List<Service> services;
     private Customer customer;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
 
     public ServiceContract() {
     }
 
-    public ServiceContract(List<Service> services, Customer customer, LocalDate startDate, LocalDate endDate) {
+    public ServiceContract(List<Service> services, Customer customer, LocalDateTime startDate, LocalDateTime endDate) {
         this.services = services;
         this.customer = customer;
         this.startDate = startDate;
@@ -37,19 +37,19 @@ public class ServiceContract {
         this.customer = customer;
     }
 
-    public LocalDate getStartDate() {
+    public LocalDateTime getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(LocalDateTime startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public LocalDateTime getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(LocalDateTime endDate) {
         this.endDate = endDate;
     }
 }

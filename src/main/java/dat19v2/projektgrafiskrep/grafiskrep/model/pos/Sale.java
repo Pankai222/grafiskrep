@@ -2,34 +2,34 @@ package dat19v2.projektgrafiskrep.grafiskrep.model.pos;
 
 import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
 
-import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Sale {
-    private Date date;
+    private LocalDateTime date;
     private int total;
     private List<MachinePart> items;
 
     public Sale() {
     }
 
-    public Sale(Date date, int total, List<MachinePart> items) {
-        this.date = date;
+    public Sale(int total, List<MachinePart> items) {
         this.total = total;
         this.items = items;
     }
 
-    public java.sql.Date convertDate() {
-        java.util.Date date = new java.util.Date();
-        return new java.sql.Date(date.getTime());
-    }
+//    Code written for using DATETIME in SQL Database.
+//    public LocalDateTime convertDate() {
+//        java.util.Date date = new java.util.Date();
+//        System.out.println(new java.sql.Date(date.getTime()));
+//        return new java.sql.Date(date.getTime());
+//    }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
@@ -48,4 +48,5 @@ public class Sale {
     public void setItems(List<MachinePart> items) {
         this.items = items;
     }
+
 }

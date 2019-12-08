@@ -1,26 +1,27 @@
 package dat19v2.projektgrafiskrep.grafiskrep.model.pos;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Invoice {
 
     private String paymentInfo;
-    private Date paymentDate;
+    private LocalDateTime paymentDate;
     private String Type;
 
     public Invoice() {
     }
 
-    public Invoice(String paymentInfo, Date paymentDate) {
+    public Invoice(String paymentInfo, LocalDateTime paymentDate) {
         this.paymentInfo = paymentInfo;
         this.paymentDate = paymentDate;
     }
 
     //converts java.util.Date to java.sql.Date so it can be inserted into database
-    public java.sql.Date convertDate(){
-        java.util.Date paymentDate = new java.util.Date();
-        return new java.sql.Date(paymentDate.getTime());
-    }
+    //    Code written for using DATETIME in SQL Database.
+//    public java.sql.Date convertDate(){
+//        java.util.Date paymentDate = new java.util.Date();
+//        return new java.sql.Date(paymentDate.getTime());
+//    }
 
     public String getPaymentInfo() {
         return paymentInfo;
@@ -30,11 +31,11 @@ public class Invoice {
         this.paymentInfo = paymentInfo;
     }
 
-    public Date getPaymentDate() {
+    public LocalDateTime getPaymentDate() {
         return paymentDate;
     }
 
-    public void setPaymentDate(Date paymentDate) {
+    public void setPaymentDate(LocalDateTime paymentDate) {
         this.paymentDate = paymentDate;
     }
 

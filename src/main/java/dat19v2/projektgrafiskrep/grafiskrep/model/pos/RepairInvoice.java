@@ -1,6 +1,6 @@
 package dat19v2.projektgrafiskrep.grafiskrep.model.pos;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class RepairInvoice extends Invoice{
     private Sale repairInfo;
@@ -12,7 +12,7 @@ public class RepairInvoice extends Invoice{
         this.repairInfo = repairInfo;
     }
 
-    public RepairInvoice(String paymentInfo, Date paymentDate, Sale repairInfo) {
+    public RepairInvoice(String paymentInfo, LocalDateTime paymentDate, Sale repairInfo) {
         super(paymentInfo, paymentDate);
         this.repairInfo = repairInfo;
     }
