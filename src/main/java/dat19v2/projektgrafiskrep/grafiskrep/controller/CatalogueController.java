@@ -13,7 +13,6 @@ import java.util.List;
 
 @Controller
 public class CatalogueController {
-
     @RequestMapping("/catalogue")
     public String catalogue(Model model, HttpSession httpSession){
 //        Start of No DB code
