@@ -13,6 +13,8 @@ import java.util.Properties;
 // FOUND ON SETTINGS PAGE ON YOUR GMAIL ACCOUNT
 
 // NOTE: upper limit of 2000 messages per day
+// NOTE: smtp = simple mail transfer protocol
+// NOTE: imap = internet message access protocol
 @Controller
 public class ContactController {
     @RequestMapping("/contact")
@@ -27,16 +29,18 @@ public class ContactController {
      * @param phoneNr phone number of sender
      * @param message message to write in email
      **/
+    // TODO: add info validation on form input
     public void sendEmail( String name, String emailSender, String phoneNr,
-                           String emailMessage ) {
+                          String emailMessage ) {
 
         final String TO = "<INSERT TO EMAIL ADDRESS HERE>";
         final String FROM = "<INSERT FROM EMAIL ADDRESS HERE>";
         final String PASSWORD = "<INSERT PASSWORD HERE>";
+        final String HOST = "smtp.gmail.com";
 
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
         // set mail server host
-        mailSender.setHost( "smtp.gmail.com" );
+        mailSender.setHost( HOST );
         // gmail TLS port( see docs )
         mailSender.setPort( 587 );
         mailSender.setUsername( FROM );
@@ -51,7 +55,7 @@ public class ContactController {
         // any login commands(this might fail, and continues without TLS)
         properties.put( "mail.smtp.starttls.enable", "true" );
         // we trust the host specified( see docs )
-        properties.put( "mail.smtp.ssl.trust", "smtp.gmail.com" );
+        properties.put( "mail.smtp.ssl.trust", HOST );
         properties.put( "mail.debug", "true" );
         mailSender.setJavaMailProperties( properties );
 
