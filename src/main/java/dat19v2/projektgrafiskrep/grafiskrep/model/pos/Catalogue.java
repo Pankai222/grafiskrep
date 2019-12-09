@@ -17,7 +17,7 @@ public class Catalogue {
         this.items = items;
     }
 
-    public List<MachinePart> getItems() {
+    public ArrayList<MachinePart> getItems() {
         return items;
     }
 

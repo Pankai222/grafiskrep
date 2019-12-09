@@ -63,8 +63,10 @@
           <div class="card-body">
             <h4 class="card-header">Kurv</h4>
             <p class="card-text">Antal: </p> <p class="card-text" th:text="${sale.getItems().size()}"></p>
-            <p class="card-text">Total: </p> <p class="card-text" th:text="${sale.getTotalPrice()}"></p>
-            <button class="btn btn-sm btn-outline-dark">Til Kassen</button>
+            <p class="card-text">Total: </p> <p class="card-text" th:text="${sale.getTotalPrice()} + DKK"></p>
+            <a href="checkout">
+              <button class="btn btn-sm btn-outline-dark">Til Kassen</button>
+            </a>
           </div>
         </div>
 
@@ -81,12 +83,12 @@
               <div class="card-body">
                   <h4 class="card-title" th:text="${catalogue.getItems().get(0).getName()}"></h4>
                   <p class="text-sm-left" th:text="${catalogue.getItems().get(0).getPartNr()}"></p>
-                <h5 th:text="${catalogue.getItems().get(0).getPrice()}"></h5>
+                <h5 th:text="${catalogue.getItems().get(0).getPrice()} + DKK"></h5>
                 <p class="card-text" th:text="${catalogue.getItems().get(0).getDesc()}"></p>
               </div>
               <div class="card-footer">
-                <form action="#" th:action="@{/add-to-cart}" th:object="${catalogue}" method="post">
-                  <input hidden="true" name="machinePart" th:value="${catalogue.getItems().get(0)}">
+                <form action="#" th:action="@{/add-to-cart}" method="post">
+                  <input hidden="true" name="itemIndex" th:value="${0}">
                   <button class="btn btn-sm btn-outline-dark" type="submit">Tilføj til kurv</button>
                 </form>
               </div>
@@ -99,11 +101,14 @@
               <div class="card-body">
                   <h4 class="card-title" th:text="${catalogue.getItems().get(1).getName()}"></h4>
                   <p class="text-sm-left" th:text="${catalogue.getItems().get(1).getPartNr()}"></p>
-                <h5 th:text="${catalogue.getItems().get(1).getPrice()}"></h5>
+                <h5 th:text="${catalogue.getItems().get(1).getPrice()} + DKK"></h5>
                 <p class="card-text" th:text="${catalogue.getItems().get(1).getDesc()}"></p>
               </div>
               <div class="card-footer">
-                <button class="btn btn-sm btn-outline-dark" type="submit">Tilføj til kurv</button>
+                <form action="#" th:action="@{/add-to-cart}" method="post">
+                  <input hidden="true" name="itemIndex" th:value="${1}">
+                  <button class="btn btn-sm btn-outline-dark" type="submit">Tilføj til kurv</button>
+                </form>
               </div>
             </div>
           </div>
@@ -114,11 +119,14 @@
               <div class="card-body">
                   <h4 class="card-title" th:text="${catalogue.getItems().get(2).getName()}"></h4>
                   <p class="text-sm-left" th:text="${catalogue.getItems().get(2).getPartNr()}"></p>
-                <h5 th:text="${catalogue.getItems().get(2).getPrice()}"></h5>
+                <h5 th:text="${catalogue.getItems().get(2).getPrice()} + DKK"></h5>
                 <p class="card-text" th:text="${catalogue.getItems().get(2).getDesc()}"></p>
               </div>
               <div class="card-footer">
-                <button class="btn btn-sm btn-outline-dark">Tilføj til kurv</button>
+                <form action="#" th:action="@{/add-to-cart}" method="post">
+                  <input hidden="true" name="itemIndex" th:value="${2}">
+                  <button class="btn btn-sm btn-outline-dark" type="submit">Tilføj til kurv</button>
+                </form>
               </div>
             </div>
           </div>
@@ -129,11 +137,14 @@
               <div class="card-body">
                   <h4 class="card-title" th:text="${catalogue.getItems().get(3).getName()}"></h4>
                   <p class="text-sm-left" th:text="${catalogue.getItems().get(3).getPartNr()}"></p>
-                <h5 th:text="${catalogue.getItems().get(3).getPrice()}"></h5>
+                <h5 th:text="${catalogue.getItems().get(3).getPrice()} + DKK"></h5>
                 <p class="card-text" th:text="${catalogue.getItems().get(3).getDesc()}"></p>
               </div>
               <div class="card-footer">
-                <button class="btn btn-sm btn-outline-dark">Tilføj til kurv</button>
+                <form action="#" th:action="@{/add-to-cart}" method="post">
+                  <input hidden="true" name="itemIndex" th:value="${3}">
+                  <button class="btn btn-sm btn-outline-dark" type="submit">Tilføj til kurv</button>
+                </form>
               </div>
             </div>
           </div>
@@ -144,11 +155,14 @@
               <div class="card-body">
                   <h4 class="card-title" th:text="${catalogue.getItems().get(4).getName()}"></h4>
                   <p class="text-sm-left" th:text="${catalogue.getItems().get(5).getPartNr()}"></p>
-                <h5 th:text="${catalogue.getItems().get(4).getPrice()}"></h5>
+                <h5 th:text="${catalogue.getItems().get(4).getPrice()} + DKK"></h5>
                 <p class="card-text" th:text="${catalogue.getItems().get(4).getDesc()}"></p>
               </div>
               <div class="card-footer">
-                <button class="btn btn-sm btn-outline-dark">Tilføj til kurv</button>
+                <form action="#" th:action="@{/add-to-cart}" method="post">
+                  <input hidden="true" name="itemIndex" th:value="${4}">
+                  <button class="btn btn-sm btn-outline-dark" type="submit">Tilføj til kurv</button>
+                </form>
               </div>
             </div>
           </div>
@@ -159,11 +173,14 @@
               <div class="card-body">
                   <h4 class="card-title" th:text="${catalogue.getItems().get(5).getName()}"></h4>
                   <p class="text-sm-left" th:text="${catalogue.getItems().get(5).getPartNr()}"></p>
-                <h5 th:text="${catalogue.getItems().get(5).getPrice()}"></h5>
+                <h5 th:text="${catalogue.getItems().get(5).getPrice()} + DKK"></h5>
                 <p class="card-text" th:text="${catalogue.getItems().get(5).getDesc()}"></p>
               </div>
               <div class="card-footer">
-                <button class="btn btn-sm btn-outline-dark">Tilføj til kurv</button>
+                <form action="#" th:action="@{/add-to-cart}" method="post">
+                  <input hidden="true" name="itemIndex" th:value="${5}">
+                  <button class="btn btn-sm btn-outline-dark" type="submit">Tilføj til kurv</button>
+                </form>
               </div>
             </div>
           </div>
