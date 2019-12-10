@@ -9,8 +9,21 @@
     <title>GrafiskRep - Bestillingsinformation</title>
 
     <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.order.css" rel="stylesheet">
     <link href="css/bootstrap.catalogue.css" rel="stylesheet">
     <link href="css/freelancer.css" rel="stylesheet">
+
+
+    <script>
+        function myFunction() {
+            if(document.getElementById('radioService').checked) {
+                document.getElementById('submitButton').innerHTML = "Bestil Service";
+            } else if(document.getElementById('radioRep').checked){
+                document.getElementById('submitButton').innerHTML = "Bestil Reperation";
+            }
+        }
+    </script>
+
 </head>
 <body>
 <!-- Navigation -->
@@ -40,31 +53,36 @@
     </div>
 </nav>
 <!--Page Content-->
-<div class="container">
+<div class="page-section container">
     <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h2>Reperation eller serviceaftale</h2>
+        <h2>Serviceaftale eller reperation?</h2> <br>
+
+        <div class="radio-toolbar" onclick="myFunction()">
+            <input type="radio" id="radioService" name="radioChoice" value="serviceaftale">
+            <label for="radioService">Serviceaftale</label>
+
+            <input type="radio" id="radioRep" name="radioChoice" value="reperation">
+            <label for="radioRep">Reperation</label>
+        </div>
     </div>
 
-    <table align="center">
-        <thead>
-        <tr>
-            <th> Title </th>
-            <th> Author </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="machine : ${items}">
-            <td><span th:text="${machine.getType()}"> Name </span></td>
-            <td><span th:text="${machine.getBrand()}"> Brand </span></td>
-        </tr>
-        </tbody>
-    </table>
-        </div>
+
+
+    <div class="mb-3" th:object="${items}">
+        <select class="form-control" id="testOrder" name="testOrder">
+            <option value="">Vaelg maskine: </option>
+            <option th:each="machines : ${items}"
+                    th:value="${machines.getModelNr()}"
+                    th:text="${machines.getType()}+' : '+${machines.getModelNr()}"></option>
+        </select>
+    </div><br>
+
+    <h4 class="mb-3">Faktureringsadresse</h4>
 
         <div class="col-md-8 order-md-1" style="display: block;margin-left:
         auto; margin-right: auto">
-            <h4 class="mb-3">Faktureringsadresse</h4>
+        </div>
+
             <form class="needs-validation" method="post" action="/order" novalidate>
                 <div class="row">
                     <div class="col-md-6 mb-3">
@@ -123,7 +141,7 @@
                     </div>
                 </div>
                 <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Indsend Bestilling</button>
+                <button class="btn btn-primary btn-lg btn-block" id="submitButton" type="submit">Bestil</button>
             </form>
         </div>
 </body>

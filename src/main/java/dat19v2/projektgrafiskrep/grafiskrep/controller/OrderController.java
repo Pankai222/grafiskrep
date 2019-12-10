@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.crypto.Mac;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +15,17 @@ import java.util.List;
 public class OrderController {
     @ModelAttribute( "items" )
     List<Machine> items() {
+        //List<Machine> machines = machineDAO.selectAll();
+
+        //NO DB KODE, no machines in DB so added them myself
         MachineDAO machineDAO = new MachineDAO();
-        List<Machine> machines = machineDAO.selectAll();
+        List<Machine> machines = new ArrayList<>();
+
+        machines.add(new Machine("Xeox","SejBrand", "1234", "x1x1x1x1","Flot printer"));
+        machines.add(new Machine("Etmaerke","FlotBrand", "12345", "x2x2x2x2","Flot Bogmaskine"));
+        machines.add(new Machine("Andetmaerke","TramperBrand", "123456", "x3x3x3x3","Flot Maskine"));
+        machines.add(new Machine("Mikaelsmor","DunnoBrand", "1234567", "x4x4x4x4","Flot Mikaels mor"));
+
         return machines;
     }
 
