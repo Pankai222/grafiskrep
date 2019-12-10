@@ -20,12 +20,6 @@ public class Sale {
         this.totalPrice = totalPrice;
     }
 
-//    Code written for using DATETIME in SQL Database.
-//    public LocalDateTime convertDate() {
-//        java.util.Date date = new java.util.Date();
-//        System.out.println(new java.sql.Date(date.getTime()));
-//        return new java.sql.Date(date.getTime());
-//    }
 
     public LocalDateTime getDate() {
         return date;

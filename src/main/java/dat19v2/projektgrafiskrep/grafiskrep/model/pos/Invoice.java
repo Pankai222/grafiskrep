@@ -16,12 +16,6 @@ public class Invoice {
         this.paymentDate = paymentDate;
     }
 
-    //converts java.util.Date to java.sql.Date so it can be inserted into database
-    //    Code written for using DATETIME in SQL Database.
-//    public java.sql.Date convertDate(){
-//        java.util.Date paymentDate = new java.util.Date();
-//        return new java.sql.Date(paymentDate.getTime());
-//    }
 
     public String getPaymentInfo() {
         return paymentInfo;
