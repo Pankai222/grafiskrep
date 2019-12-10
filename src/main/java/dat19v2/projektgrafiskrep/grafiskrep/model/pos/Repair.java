@@ -2,7 +2,6 @@ package dat19v2.projektgrafiskrep.grafiskrep.model.pos;
 
 import dat19v2.projektgrafiskrep.grafiskrep.model.Machine;
 import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
-
 import java.util.ArrayList;
 import java.util.List;
 
