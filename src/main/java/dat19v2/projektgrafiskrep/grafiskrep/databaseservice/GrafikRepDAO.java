@@ -5,6 +5,7 @@ import dat19v2.projektgrafiskrep.grafiskrep.model.GrafiskRep;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class GrafikRepDAO {
 
@@ -29,4 +30,17 @@ public class GrafikRepDAO {
         }
     }
 
+
+    public void delete(String CVR) {
+        String sql = "DELETE FROM grafiskRep WHERE CVR = ?";
+
+        try (Connection con = DatabaseAdapter.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setString(1,CVR);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+
+    }
 }

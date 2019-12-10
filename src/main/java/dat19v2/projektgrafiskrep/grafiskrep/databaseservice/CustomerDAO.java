@@ -57,12 +57,12 @@ public class CustomerDAO {
     }
 
 
-    public void delete(String string) {
+    public void delete(String CVR) {
         String sql = "DELETE FROM customers WHERE CVR = ?";
         try (Connection con =
                      DatabaseAdapter.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, string);
+            ps.setString(1, CVR);
             ps.executeUpdate();
 
         } catch (Exception e) {
@@ -70,21 +70,23 @@ public class CustomerDAO {
         }
     }
     // Doesn't work as intended yet..
-    public void update(String string2, String string3) {
+    public void update(String updateField, String newValue, String CVR) {
         String sql = "UPDATE customers " +
-                "SET Name = ? " +
+                "SET ? = ? " +
                 "WHERE CVR = ?";
         try (Connection con =
                      DatabaseAdapter.getConnection();
             PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1, string2);
-            ps.setString(2, string3);
+            ps.setString(1,updateField);
+            ps.setString(2, newValue);
+            ps.setString(3, CVR);
             ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }
     }
 
+    // doesn't work yet
     public void select() {
         String sql = "SELECT CVR, Name, Address, Phone, Email FROM customers WHERE CVR = ?";
 
@@ -92,7 +94,7 @@ public class CustomerDAO {
                 DatabaseAdapter.getConnection();
             PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
-            ps.setString(7, "12345");
+            ps.setString(1, "12345");
             while (rs.next()) {
                 String CVR = rs.getString("CVR");
                 String Name = rs.getString("Name");

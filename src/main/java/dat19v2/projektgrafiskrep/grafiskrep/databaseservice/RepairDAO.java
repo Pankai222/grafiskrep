@@ -17,7 +17,21 @@ public class RepairDAO {
             ps.executeUpdate();
 
         } catch (Exception e) {
-            System.out.println("Errowuyyuy" + e);
+            System.out.println("Error" + e);
         }
     }
+
+    public void delete() {
+    }
+
+    public void selectAll() {
+
+    }
+
+    public void select() {
+
+
+    }
+
+
 }
