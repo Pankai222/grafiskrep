@@ -25,7 +25,8 @@ public class OrderController {
     }
 
     @PostMapping( "/order" )
-    public void sendServiceOrder() {
+    public void sendServiceOrder( String firstName, String lastName, String cvr,
+                                  String email, String address, String postNr ) {
 
     }
 }

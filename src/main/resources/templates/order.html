@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>GrafikRep - Bestillingsinformation</title>
+    <title>GrafiskRep - Bestillingsinformation</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.catalogue.css" rel="stylesheet">
@@ -65,18 +65,18 @@
         <div class="col-md-8 order-md-1" style="display: block;margin-left:
         auto; margin-right: auto">
             <h4 class="mb-3">Faktureringsadresse</h4>
-            <form class="needs-validation" novalidate>
+            <form class="needs-validation" method="post" action="/order" novalidate>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName">Fornavn</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="" value="" required>
                         <div class="invalid-feedback">
                             Et fornavn er påkrævet.
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="lastName">Efternavn</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="" value="" required>
                         <div class="invalid-feedback">
                             Et efternavn er påkrævet.
                         </div>
@@ -86,7 +86,7 @@
                 <div class="mb-3">
                     <label for="username">CVR</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="username" placeholder="CVR" required>
+                        <input type="text" class="form-control" id="username" name="cvr" placeholder="CVR" required>
                         <div class="invalid-feedback" style="width: 100%;">
                             Et CVR nummer er påkrævet.
                         </div>
@@ -95,7 +95,7 @@
 
                 <div class="mb-3">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
                     <div class="invalid-feedback">
                         En email adresse er påkrævet.
                     </div>
@@ -103,7 +103,7 @@
 
                 <div class="mb-3">
                     <label for="address">Adresse</label>
-                    <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                    <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St" required>
                     <div class="invalid-feedback">
                         En adresse er påkrævet.
                     </div>
@@ -116,7 +116,7 @@
                     </div>
                     <div class="col-md-2 mb-3">
                         <label for="zip">Post Nr.</label>
-                        <input type="text" class="form-control" id="zip" placeholder="" required>
+                        <input type="text" class="form-control" id="zip" name="postNr" placeholder="" required>
                         <div class="invalid-feedback">
                             Zip code required.
                         </div>
