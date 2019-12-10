@@ -44,9 +44,10 @@ public class Sale {
     }
 
     public void calcTotalPrice(){
+        totalPrice = 0;
         for (MachinePart part:
                 items) {
-            totalPrice =+ part.getPrice();
+            totalPrice += part.getPrice();
         }
     }
     public List<MachinePart> getItems() {
