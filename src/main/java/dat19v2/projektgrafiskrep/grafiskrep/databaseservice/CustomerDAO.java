@@ -34,6 +34,7 @@ public class CustomerDAO {
         }
         return customers;
     }
+
     // method for inserting shit into customers table
     public void insert(Customer customer) {
         String sql = "INSERT INTO customers" + "(CVR, Name, Address, Phone, Email)" + "VALUES (?," +

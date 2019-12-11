@@ -2,6 +2,7 @@ package dat19v2.projektgrafiskrep.grafiskrep.model.pos;
 
 import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
 
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,10 @@ public class Sale {
         this.totalPrice = totalPrice;
     }
 
+    public Sale (LocalDateTime date, int totalPrice) {
+        this.date = date;
+        this.totalPrice = totalPrice;
+    }
 
     public LocalDateTime getDate() {
         return date;

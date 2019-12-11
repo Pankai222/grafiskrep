@@ -4,6 +4,9 @@ import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MachinePartDAO {
 
@@ -23,5 +26,29 @@ public class MachinePartDAO {
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }
+    }
+
+    public List<MachinePart> selectAll() {
+        List<MachinePart> partList = new ArrayList<>();
+        String sql = "SELECT * FROM machineParts";
+
+        try (Connection con = DatabaseAdapter.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                MachinePart mp = new MachinePart();
+                mp.setBrand(rs.getString("Brand"));
+                mp.setName(rs.getString("Name"));
+                mp.setPrice(rs.getInt("Price"));
+                mp.setPartNr(rs.getString("PartNr"));
+                mp.setDesc(rs.getString("Description"));
+                partList.add(mp);
+
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+        return partList;
     }
 }
