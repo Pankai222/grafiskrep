@@ -20,10 +20,10 @@ public class OrderController {
         MachineDAO machineDAO = new MachineDAO();
         List<Machine> machines = new ArrayList<>();
 
-        machines.add(new Machine("Xeox","SejBrand", "1234", "x1x1x1x1","Flot printer"));
-        machines.add(new Machine("Etmaerke","FlotBrand", "12345", "x2x2x2x2","Flot Bogmaskine"));
-        machines.add(new Machine("Andetmaerke","TramperBrand", "123456", "x3x3x3x3","Flot Maskine"));
-        machines.add(new Machine("Mikaelsmor","DunnoBrand", "1234567", "x4x4x4x4","Flot Mikaels mor"));
+        machines.add(new Machine("Xeox","SejBrand", "x1x1x1x1","Flot printer"));
+        machines.add(new Machine("Etmaerke","FlotBrand", "x2x2x2x2","Flot Bogmaskine"));
+        machines.add(new Machine("Andetmaerke","TramperBrand", "x3x3x3x3","Flot Maskine"));
+        machines.add(new Machine("Mikaelsmor","DunnoBrand", "x4x4x4x4","Flot Mikaels mor"));
 
         return machines;
     }

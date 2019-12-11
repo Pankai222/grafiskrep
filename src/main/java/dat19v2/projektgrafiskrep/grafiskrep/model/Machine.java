@@ -5,17 +5,16 @@ public class Machine {
     private String type;
     private String brand;
     private String modelNr;
-    private String serialNr;
     private String desc;
 
     public Machine() {
     }
 
-    public Machine(String type, String brand, String modelNr, String serialNr, String desc) {
+    public Machine(String type, String brand, String modelNr, String desc) {
         this.type = type;
         this.brand = brand;
         this.modelNr = modelNr;
-        this.serialNr = serialNr;
+
         this.desc = desc;
     }
 
@@ -41,14 +40,6 @@ public class Machine {
 
     public void setModelNr(String modelNr) {
         this.modelNr = modelNr;
-    }
-
-    public String getSerialNr() {
-        return serialNr;
-    }
-
-    public void setSerialNr(String serialNr) {
-        this.serialNr = serialNr;
     }
 
     public String getDesc() {

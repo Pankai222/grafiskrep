@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class MachinePartDAO {
 
@@ -28,8 +28,8 @@ public class MachinePartDAO {
         }
     }
 
-    public List<MachinePart> selectAll() {
-        List<MachinePart> partList = new ArrayList<>();
+    public ArrayList<MachinePart> selectAll() {
+        ArrayList<MachinePart> partList = new ArrayList<>();
         String sql = "SELECT * FROM machineParts";
 
         try (Connection con = DatabaseAdapter.getConnection();
