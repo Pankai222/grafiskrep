@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.crypto.Mac;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,8 +34,10 @@ public class OrderController {
     }
 
     @PostMapping( "/order" )
-    public void sendServiceOrder( String firstName, String lastName, String cvr,
+    // NOTE: maybe turn it into an Order object?
+    public void sendOrder( String radioChoice, String machine, String firstName, String lastName, String cvr,
                                   String email, String address, String postNr ) {
-
+        System.out.format( "%s, %s, %s, %s, %s, %s, %s, %s\n", radioChoice, machine, firstName, lastName,
+                                                               cvr, email, address, postNr );
     }
 }

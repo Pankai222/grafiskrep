@@ -56,25 +56,33 @@
 
 <!--Page Content-->
 <div class="page-section container">
+    <form class="needs-validation" method="post" action="/order">
     <div class="py-5 text-center">
         <h2>Serviceaftale eller reperation?</h2> <br>
 
-        <div class="radio-toolbar" onclick="changeButton()">
-            <input type="radio" id="radioService" name="radioChoice" value="serviceaftale">
-            <label for="radioService">Serviceaftale</label>
 
-            <input type="radio" id="radioRep" name="radioChoice" value="reperation">
+        <div class="radio-toolbar" onclick="changeButton()">
+            <input type="radio" class="form-control" id="radioService" name="radioChoice" value="serviceaftale" required>
+            <label for="radioService">Serviceaftale</label>
+            <div class="invalid-feedback">
+                Vælg Serviceaftale eller Reparation
+            </div>
+
+            <input type="radio" class="form-control" id="radioRep" name="radioChoice" value="reperation" required>
             <label for="radioRep">Reperation</label>
+            <div class="invalid-feedback">
+                Vælg Serviceaftale eller Reparation
+            </div>
         </div>
     </div>
 
     <!-- Shows the list of the machines that are in items array -->
     <div class="mb-3" th:object="${items}">
-        <select class="form-control" id="testOrder" name="testOrder">
+        <select class="form-control" id="machine" name="machine">
             <option value="">Vaelg maskine: </option>
-            <option th:each="machines : ${items}"
-                    th:value="${machines.getModelNr()}"
-                    th:text="${machines.getType()}+' : '+${machines.getModelNr()}"></option>
+            <option th:each="machine : ${items}"
+                    th:value="${machine.getType()} + ' : ' + ${machine.getModelNr()}"
+                    th:text="${machine.getType()}+' : '+${machine.getModelNr()}"></option>
         </select>
     </div><br>
 
@@ -83,8 +91,6 @@
         <div class="col-md-8 order-md-1" style="display: block;margin-left:
         auto; margin-right: auto">
         </div>
-
-            <form class="needs-validation" method="post" action="/order" novalidate>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName">Fornavn</label>
