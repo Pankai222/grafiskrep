@@ -1,22 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>GrafiskRep - Service</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.order.css" rel="stylesheet">
+    <link href="css/bootstrap.catalogue.css" rel="stylesheet">
+    <link href="css/freelancer.css" rel="stylesheet">
+
+    <!-- Script that changes the text of the submit button depending on what radioButton is chosen -->
+    <script>
+        function changeButton() {
+            if(document.getElementById('radioService').checked) {
+                document.getElementById('submitButton').innerHTML = "Bestil Service";
+            } else if(document.getElementById('radioRep').checked){
+                document.getElementById('submitButton').innerHTML = "Bestil Reperation";
+            }
+        }
+    </script>
+
 </head>
 <body>
+
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
-        <a href="index" class="nav-link py-3 px-0 px-lg-3 rounded">
-            <img class="GrafiskRep-header-logo" src="img/Logo/grafiskreplogoheader.png" alt="">
-        </a>
-        <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            Menu
-            <i class="fas fa-bars"></i>
-        </button>
+        <div class="nav-logo">
+            <a href="index">
+                <img class="nav-img" src="img/Logo/grafiskreplogoheader.png" alt="">
+            </a>
+        </div>
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/order">Service</a>
+                </li>
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/catalogue">Køb Reservedele</a>
                 </li>
@@ -30,5 +53,107 @@
         </div>
     </div>
 </nav>
+
+<!--Page Content-->
+<div class="page-section container">
+    <form class="needs-validation" method="post" action="/order">
+    <div class="py-5 text-center">
+        <h2>Serviceaftale eller reperation?</h2> <br>
+
+
+        <div class="radio-toolbar" onclick="changeButton()">
+            <input type="radio" class="form-control" id="radioService" name="radioChoice" value="serviceaftale" required>
+            <label for="radioService">Serviceaftale</label>
+            <div class="invalid-feedback">
+                Vælg Serviceaftale eller Reparation
+            </div>
+
+            <input type="radio" class="form-control" id="radioRep" name="radioChoice" value="reperation" required>
+            <label for="radioRep">Reperation</label>
+            <div class="invalid-feedback">
+                Vælg Serviceaftale eller Reparation
+            </div>
+        </div>
+    </div>
+
+    <!-- Shows the list of the machines that are in items array -->
+    <div class="mb-3" th:object="${items}">
+        <select class="form-control" id="machine" name="machine">
+            <option value="">Vaelg maskine: </option>
+            <option th:each="machine : ${items}"
+                    th:value="${machine.getType()} + ' : ' + ${machine.getModelNr()}"
+                    th:text="${machine.getType()}+' : '+${machine.getModelNr()}"></option>
+        </select>
+    </div><br>
+
+    <h4 class="mb-3">Faktureringsadresse</h4>
+
+        <div class="col-md-8 order-md-1" style="display: block;margin-left:
+        auto; margin-right: auto">
+        </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="firstName">Fornavn</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            Et fornavn er påkrævet.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="lastName">Efternavn</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            Et efternavn er påkrævet.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="username">CVR</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="username" name="cvr" placeholder="CVR" required>
+                        <div class="invalid-feedback">
+                            Et CVR nummer er påkrævet.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
+                    <div class="invalid-feedback">
+                        En email adresse er påkrævet.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="address">Adresse</label>
+                    <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St" required>
+                    <div class="invalid-feedback">
+                        En adresse er påkrævet.
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-10 mb-3">
+                        <label for="address2">Adresse 2 <span class="text-muted">(Optional)</span></label>
+                        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <label for="zip">Post Nr.</label>
+                        <input type="text" class="form-control" id="zip" name="postNr" placeholder="" required>
+                        <div class="invalid-feedback">
+                            Zip code required.
+                        </div>
+                    </div>
+                    <div class="col-md 10 mb-3">
+                        <label for="comment">Kommentar</label>
+                        <textarea type="text" class="form-control" id="comment" name="comment" placeholder="Din kommentar"></textarea>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" id="submitButton" type="submit">Bestil</button>
+            </form>
+        </div>
 </body>
 </html>
