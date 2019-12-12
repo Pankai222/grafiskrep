@@ -6,6 +6,7 @@ import dat19v2.projektgrafiskrep.grafiskrep.databaseservice.ServiceContractDAO;
 import dat19v2.projektgrafiskrep.grafiskrep.databaseservice.ServiceContractOrderDAO;
 import dat19v2.projektgrafiskrep.grafiskrep.model.Customer;
 import dat19v2.projektgrafiskrep.grafiskrep.model.Machine;
+import dat19v2.projektgrafiskrep.grafiskrep.model.service.Service;
 import dat19v2.projektgrafiskrep.grafiskrep.model.service.ServiceContract;
 import dat19v2.projektgrafiskrep.grafiskrep.model.service.ServiceContractOrder;
 import org.springframework.stereotype.Controller;
@@ -18,15 +19,15 @@ import java.util.ArrayList;
 
 @Controller
 public class ServiceOrderController {
+
+    @RequestMapping("/service_order")
+    public String serviceOrder(){
+        return "service_order";
+    }
+
     @ModelAttribute( "items" )
     ArrayList<Machine> items() {
         return new MachineDAO().selectAll();
-    }
-
-    @RequestMapping( "/service_order" )
-    public String serviceOrder( String radioChoice )  {
-        System.out.println( radioChoice );
-        return "service_order";
     }
 
     @PostMapping( "/service_order" )
