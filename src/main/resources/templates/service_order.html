@@ -14,17 +14,6 @@
     <link href="css/bootstrap.catalogue.css" rel="stylesheet">
     <link href="css/freelancer.css" rel="stylesheet">
 
-    <!-- Script that changes the text of the submit button depending on what radioButton is chosen -->
-    <script>
-        function changeButton() {
-            if(document.getElementById('radioService').checked) {
-                document.getElementById('submitButton').innerHTML = "Bestil Service";
-            } else if(document.getElementById('radioRep').checked){
-                document.getElementById('submitButton').innerHTML = "Bestil Reperation";
-            }
-        }
-    </script>
-
 </head>
 <body>
 
@@ -39,7 +28,10 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item mx-0 mx-lg-1">
-                    <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/order">Service</a>
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/repair_order">Reparation</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/service_order">Service</a>
                 </li>
                 <li class="nav-item mx-0 mx-lg-1">
                     <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/catalogue">Køb Reservedele</a>
@@ -55,25 +47,12 @@
     </div>
 </nav>
 
+
 <!--Page Content-->
 <div class="page-section container">
     <form class="needs-validation" method="post" action="/service_order">
     <div class="py-5 text-center">
         <h2>Serviceaftale eller reperation?</h2> <br>
-        <div class="radio-toolbar" onclick="changeButton()">
-            <input type="radio" class="form-control" id="radioService"
-                   name="radioChoice" value="serviceaftale" required>
-            <label for="radioService">Serviceaftale</label>
-            <div class="invalid-feedback">
-                Vælg Serviceaftale eller Reparation
-            </div>
-
-            <input type="radio" class="form-control" id="radioRep" name="radioChoice" value="reperation" required>
-            <label for="radioRep">Reperation</label>
-            <div class="invalid-feedback">
-                Vælg Serviceaftale eller Reparation
-            </div>
-        </div>
     </div>
 
     <!-- Shows the list of the machines that are in items array -->
@@ -159,7 +138,7 @@
                     </div>
                 </div>
                 <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" id="submitButton" type="submit">Bestil</button>
+                <button class="btn btn-primary btn-lg btn-block" id="submitButton" type="submit">Bestil Service</button>
             </form>
         </div>
 </body>

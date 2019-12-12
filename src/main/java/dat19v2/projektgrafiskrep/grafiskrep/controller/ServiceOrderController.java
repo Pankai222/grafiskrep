@@ -19,15 +19,15 @@ import java.util.ArrayList;
 
 @Controller
 public class ServiceOrderController {
+
+    @RequestMapping("/service_order")
+    public String serviceOrder(){
+        return "service_order";
+    }
+
     @ModelAttribute( "items" )
     ArrayList<Machine> items() {
         return new MachineDAO().selectAll();
-    }
-
-    @RequestMapping( "/service_order" )
-    public String serviceOrder( String radioChoice )  {
-        System.out.println( radioChoice );
-        return "service_order";
     }
 
     @PostMapping( "/service_order" )
