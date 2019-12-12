@@ -15,7 +15,6 @@ public class SaleDAO {
                      DatabaseAdapter.getConnection();
              PreparedStatement ps = con.prepareStatement(sql))
         {
-
             ps.setString(1,sale.getDate().toString());
             ps.setInt(2,sale.getTotalPrice());
             ps.executeUpdate();
