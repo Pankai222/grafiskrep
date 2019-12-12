@@ -9,8 +9,8 @@ public class SaleDAO {
 
 
     public void insert(Sale sale) {
-        String sql = "INSERT INTO sales" + "(Date, TotalPrice)" +
-                "VALUES (?,?)";
+        String sql = "INSERT INTO sales" + "(Date, TotalPrice, customers_idcustomers)" +
+                "VALUES (?,?, LAST_INSERT_ID())";
         try (Connection con =
                      DatabaseAdapter.getConnection();
              PreparedStatement ps = con.prepareStatement(sql))
