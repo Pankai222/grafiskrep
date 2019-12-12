@@ -19,6 +19,7 @@ public class ServiceContractOrderDAO {
              PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setString(1,SCO.getDate().toString());
+            ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }

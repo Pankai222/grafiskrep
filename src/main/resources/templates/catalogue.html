@@ -54,10 +54,10 @@
 
         <h1 class="my-4">Køb Reservedele</h1>
         <div class="list-group mb-4">
-          <a href="#" class="list-group-item">{thymeleaf.machine.name}</a>
-          <a href="#" class="list-group-item">{thymeleaf.machine.name}</a>
-          <a href="#" class="list-group-item">{thymeleaf.machine.name}</a>
-          <a href="#" class="list-group-item">{thymeleaf.machine.name}</a>
+          <tr th:each="machine : ${machines}">
+            <a href="#" class="list-group-item" th:text="${machine.getType()}">{thymeleaf.machine.name}</a>
+          </tr>
+
         </div>
 
         <div class="card h-auto mb-4">

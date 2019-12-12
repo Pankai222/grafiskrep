@@ -1,5 +1,8 @@
 package dat19v2.projektgrafiskrep.grafiskrep.controller;
 
+import dat19v2.projektgrafiskrep.grafiskrep.databaseservice.MachineDAO;
+import dat19v2.projektgrafiskrep.grafiskrep.databaseservice.MachinePartDAO;
+import dat19v2.projektgrafiskrep.grafiskrep.model.Machine;
 import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
 import dat19v2.projektgrafiskrep.grafiskrep.model.pos.Catalogue;
 import dat19v2.projektgrafiskrep.grafiskrep.model.pos.Sale;
@@ -18,23 +21,20 @@ public class CatalogueController {
     @ModelAttribute("catalogue")
     public Catalogue catalogue(){
         Catalogue catalogue = new Catalogue();
-        //        Start of No DB access code
-        catalogue.getItems().add(new MachinePart("Part 1", "Brand 1", "PartNr 1", "Description 1", 100));
-        catalogue.getItems().add(new MachinePart("Part 2", "Brand 2", "PartNr 2", "Description 2", 150));
-        catalogue.getItems().add(new MachinePart("Part 3", "Brand 3", "PartNr 3", "Description 3", 175));
-        catalogue.getItems().add(new MachinePart("Part 4", "Brand 4", "PartNr 4", "Description 4", 201));
-        catalogue.getItems().add(new MachinePart("Part 5", "Brand 5", "PartNr 5", "Description 5", 509));
-        catalogue.getItems().add(new MachinePart("Part 6", "Brand 6", "PartNr 6", "Description 6", 1000));
-        //        End of No DB access code
+        catalogue.setItems(new MachinePartDAO().selectAll());
         return catalogue;
     }
-//    Will use this code later when the number of parts is unknown
-//    @ModelAttribute("items")
-//    public ArrayList<MachinePart> items(){
-//        Catalogue catalogue = new Catalogue();
-//    DATABASE SELECTALL HERE
-//        return catalogue.getItems();
-//    }
+//    This is for later use, might refractor to use this for switching to thymeleaf each
+    @ModelAttribute("items")
+    public ArrayList<MachinePart> items(){
+        return new MachinePartDAO().selectAll();
+    }
+
+    @ModelAttribute("machines")
+    public ArrayList<Machine> machines(){
+        return new MachineDAO().selectAll();
+    }
+
     @ModelAttribute("sale")
     public Sale sale(){
         Sale sale = new Sale();
@@ -42,7 +42,7 @@ public class CatalogueController {
     }
 
     @RequestMapping("/catalogue")
-    public String catalogue(@ModelAttribute("catalogue") Catalogue catalogue, @ModelAttribute("sale") Sale sale, HttpSession httpSession){
+    public String catalogue(@ModelAttribute("catalogue") Catalogue catalogue, @ModelAttribute("sale") Sale sale, @ModelAttribute("machines") ArrayList<Machine> machines, HttpSession httpSession){
         httpSession.setAttribute("sale", new Sale());
         httpSession.setAttribute("catalogue", catalogue);
         return "catalogue";

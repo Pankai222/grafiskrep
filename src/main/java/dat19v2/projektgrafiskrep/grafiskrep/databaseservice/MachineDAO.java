@@ -21,7 +21,6 @@ public class MachineDAO {
             ps.setString(2, machine.getBrand());
             ps.setString(3, machine.getModelNr());
             ps.setString(4, machine.getDesc());
-            ps.setString(5, machine.getSerialNr());
             ps.executeUpdate();
 
         } catch (Exception e) {
@@ -69,7 +68,6 @@ public class MachineDAO {
                 String brand = rs.getString( "Brand" );
                 String modelnr = rs.getString( "ModelNr" );
                 String desc = rs.getString( "Description" );
-                String serialNr = rs.getString( "SerialNr" );
                 System.out.format( "%s, %s, %s, %s, %s\n", type, brand, modelnr, desc, serialNr );
             }
             */
@@ -78,8 +76,8 @@ public class MachineDAO {
         }
     }
 
-    public List<Machine> selectAll() {
-        List<Machine> machines = new ArrayList<>();
+    public ArrayList<Machine> selectAll() {
+        ArrayList<Machine> machines = new ArrayList<>();
         String sql = "SELECT * FROM machines";
 
         try ( Connection con = DatabaseAdapter.getConnection();
@@ -92,7 +90,6 @@ public class MachineDAO {
                 machine.setBrand( rs.getString( "Brand" ) );
                 machine.setModelNr( rs.getString( "ModelNr" ) );
                 machine.setDesc( rs.getString( "Description" ) );
-                machine.setSerialNr( rs.getString( "SerialNr" ) );
                 machines.add( machine );
             }
         } catch ( Exception ex ) {

@@ -49,7 +49,7 @@ public class Sale {
             totalPrice += part.getPrice();
         }
     }
-    public List<MachinePart> getItems() {
+    public ArrayList<MachinePart> getItems() {
         return items;
     }
 
