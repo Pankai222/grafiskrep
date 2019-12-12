@@ -9,12 +9,22 @@ public class SaleDAO {
 
 
     public void insert(Sale sale) {
-        String sql = "INSERT INTO sales" + "(Date, TotalPrice, customers_idcustomers)" +
+        String sql1 = "INSERT INTO customers" + "(CVR, Name, Address, Phone, Email)" + "VALUES" +
+                "(?,?,?,?,?)";
+        String sql2 = "INSERT INTO sales" + "(Date, TotalPrice, customers_idcustomers)" +
                 "VALUES (?,?, LAST_INSERT_ID())";
         try (Connection con =
                      DatabaseAdapter.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql))
+             PreparedStatement sp = con.prepareStatement(sql1);
+             PreparedStatement ps = con.prepareStatement(sql2))
         {
+
+            sp.setString(1,sale.getCustomer().getCvr());
+            sp.setString(2,sale.getCustomer().getName());
+            sp.setString(3,sale.getCustomer().getAddress());
+            sp.setString(4,sale.getCustomer().getPhoneNr());
+            sp.setString(5,sale.getCustomer().getEmail());
+            sp.executeUpdate();
 
             ps.setString(1,sale.getDate().toString());
             ps.setInt(2,sale.getTotalPrice());
