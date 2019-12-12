@@ -6,6 +6,7 @@ import dat19v2.projektgrafiskrep.grafiskrep.databaseservice.ServiceContractDAO;
 import dat19v2.projektgrafiskrep.grafiskrep.databaseservice.ServiceContractOrderDAO;
 import dat19v2.projektgrafiskrep.grafiskrep.model.Customer;
 import dat19v2.projektgrafiskrep.grafiskrep.model.Machine;
+import dat19v2.projektgrafiskrep.grafiskrep.model.service.Service;
 import dat19v2.projektgrafiskrep.grafiskrep.model.service.ServiceContract;
 import dat19v2.projektgrafiskrep.grafiskrep.model.service.ServiceContractOrder;
 import org.springframework.stereotype.Controller;

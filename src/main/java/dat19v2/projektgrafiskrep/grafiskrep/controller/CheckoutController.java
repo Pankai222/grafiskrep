@@ -18,7 +18,6 @@ public class CheckoutController {
     public ArrayList<MachinePart> saleitems (HttpSession httpSession){
         Sale sale = (Sale) httpSession.getAttribute("sale");
         return sale.getItems();
-
     }
 
     @RequestMapping("/checkout")
