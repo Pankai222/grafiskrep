@@ -74,12 +74,11 @@
 
             <label class="col-md-2" for="repairDate">Hvilken dato ønsker du reparation?</label>
 
-            <form class="mb-3">
-                <input type="date" name="repairDate" id="repairDate" required="required">
+                <input type="date" name="repairDate" id="repairDate" required>
                 <div class="invalid-feedback">
                     En dato er pækrævet.
                 </div>
-            </form>
+
         </div><br>
 
         <h4 class="mb-3">Kundeplysninger</h4>
@@ -112,7 +111,7 @@
 
             <div class="col-md-6 mb-3">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
+                <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
                 <div class="invalid-feedback">
                     En email adresse er påkrævet.
                 </div>
