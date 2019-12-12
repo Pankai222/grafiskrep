@@ -5,6 +5,8 @@ import dat19v2.projektgrafiskrep.grafiskrep.model.service.ServiceContractOrder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +23,7 @@ public class ServiceContractOrderDAO {
             System.out.println("Error: " + e);
         }
     }
-
+    /* Not sure if this is viable
     public List<ServiceContractOrder> selectAll() {
         List<ServiceContractOrder> serviceOrderList = new ArrayList<>();
         String sql = "SELECT * FROM CUSTOMERS";
@@ -30,7 +32,9 @@ public class ServiceContractOrderDAO {
             ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                 ServiceContractOrder SVO = new ServiceContractOrder();
+                SVO.setDate(LocalDateTime.parse(rs.getString("Date"), formatter));
 
 
             }
@@ -38,5 +42,5 @@ public class ServiceContractOrderDAO {
             System.out.println("Error: " + e);
         }
         return serviceOrderList;
-    }
+    } */
 }

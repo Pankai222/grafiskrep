@@ -4,10 +4,13 @@ import dat19v2.projektgrafiskrep.grafiskrep.model.pos.Invoice;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InvoiceDAO {
 
-//    TODO Fix date issue
+
     public void insert(Invoice invoice) {
         String sql = "INSERT INTO invoice" + "(PaymentInfo, PaymentDate, Type)" +
                 "VALUES (?," +
@@ -21,12 +24,29 @@ public class InvoiceDAO {
             ps.setString(1, invoice.getPaymentInfo());
             ps.setString(2, invoice.getPaymentDate().toString());
             ps.setString(3, invoice.getType());
-
             ps.executeUpdate();
 
         } catch (Exception e) {
             System.out.println("Err0r: " + e);
         }
     }
+
+    public List<Invoice> selectAll() {
+        List<Invoice> invoices = new ArrayList<>();
+        String sql = "SELECT * FROM invoices";
+
+        try (Connection con = DatabaseAdapter.getConnection();
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+    return invoices;
+    }
+
 
 }
