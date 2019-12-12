@@ -8,11 +8,16 @@
 
     <title>GrafiskRep - Reparation</title>
 
+    <link rel="apple-touch-icon" sizes="180x180" href="img/Troll/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/Troll/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/Troll/favicon_io/favicon-16x16.png">
+
     <!-- Bootstrap core CSS -->
     <!--    TODO remove navbar classes from bootstrap.order and bootstrap.catalogue-->
     <link href="css/bootstrap.order.css" rel="stylesheet">
     <link href="css/bootstrap.catalogue.css" rel="stylesheet">
     <link href="css/freelancer.css" rel="stylesheet">
+    <link href="css/bootstrap.repair_order.css" rel="stylesheet">
 
 </head>
 <body>
@@ -51,20 +56,33 @@
 <div class="page-section container">
     <form class="needs-validation" method="post" action="/service_order">
         <div class="py-5 text-center">
-            <h2>Serviceaftale eller reperation?</h2> <br>
+            <h2>Reparation</h2> <br>
         </div>
 
         <!-- Shows the list of the machines that are in items array -->
-        <div class="mb-3" th:object="${items}">
-            <select class="form-control" id="machine" name="machine">
-                <option value="">Vaelg maskine: </option>
-                <option th:each="machine : ${items}"
-                        th:value="${machine.getType()} + ' : ' + ${machine.getModelNr()}"
-                        th:text="${machine.getType()}+' : '+${machine.getModelNr()}"></option>
-            </select>
+        <div class="row">
+
+            <div class="col-md-6 mb-3" th:object="${items}">
+                <select class="form-control" id="machine" name="machine">
+                    <option value="">Vaelg maskine: </option>
+                    <option th:each="machine : ${items}"
+                            th:value="${machine.getType()} + ' : ' + ${machine.getModelNr()}"
+                            th:text="${machine.getType()}+' : '+${machine.getModelNr()}"></option>
+                    <option value="">Ved ikke</option>
+                </select>
+            </div>
+
+            <label class="col-md-2" for="repairDate">Hvilken dato ønsker du reparation?</label>
+
+            <form class="mb-3">
+                <input type="date" name="repairDate" id="repairDate" required="required">
+                <div class="invalid-feedback">
+                    En dato er pækrævet.
+                </div>
+            </form>
         </div><br>
 
-        <h4 class="mb-3">Faktureringsadresse</h4>
+        <h4 class="mb-3">Kundeplysninger</h4>
 
         <div class="col-md-8 order-md-1" style="display: block;margin-left:
         auto; margin-right: auto">
@@ -91,6 +109,14 @@
                     Telefonnummer er påkrævet.
                 </div>
             </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
+                <div class="invalid-feedback">
+                    En email adresse er påkrævet.
+                </div>
+            </div>
         </div>
 
         <div class="mb-3">
@@ -100,14 +126,6 @@
                 <div class="invalid-feedback">
                     Et CVR nummer er påkrævet.
                 </div>
-            </div>
-        </div>
-
-        <div class="mb-3">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
-            <div class="invalid-feedback">
-                En email adresse er påkrævet.
             </div>
         </div>
 

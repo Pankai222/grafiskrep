@@ -30,7 +30,7 @@ public class RepairOrderController {
 
     @PostMapping( "/repair_order" )
     // NOTE: maybe turn it into an Order object?
-    public void sendOrder( String radioChoice, String machine, String firstName, String lastName, String phoneNr, String cvr,
+    public void sendOrder( String repairDate, String machine, String firstName, String lastName, String phoneNr, String cvr,
                            String email, String address, String postNr, String comment) {
         Customer customer = new Customer( cvr, ( firstName + lastName ), address, phoneNr, email );
         // NOTE: start and end date are set to null because GrafiskRep will decide when it will start and end with
@@ -41,7 +41,7 @@ public class RepairOrderController {
 
         new CustomerDAO().insert( customer );
         new ServiceContractOrderDAO().insert( SCO );
-        System.out.format( "%s, %s, %s, %s, %s, %s, %s, %s, %s, %s\n", radioChoice, machine, firstName, lastName, phoneNr,
+        System.out.format( "%s, %s, %s, %s, %s, %s, %s, %s, %s, %s\n", repairDate, machine, firstName, lastName, phoneNr,
                 cvr, email, address, postNr, comment );
     }
 }
