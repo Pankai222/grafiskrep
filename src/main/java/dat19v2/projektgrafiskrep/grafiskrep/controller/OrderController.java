@@ -36,14 +36,13 @@ public class OrderController {
         Customer customer = new Customer( cvr, ( firstName + lastName ), address, phoneNr, email );
         // NOTE: start and end date are set to null because GrafiskRep will decide when it will start and end with
         // the customer
-        ServiceContract serviceContract = new ServiceContract( null, customer, null, null );
-        ServiceContractOrder SCO = new ServiceContractOrder( serviceContract, LocalDateTime.now() );
+        ArrayList<Service> services = new ArrayList<>();
+        ServiceContractOrder SCO = new ServiceContractOrder(LocalDateTime.now(), services, customer);
 
         // TODO: ASK ABOUT DATABASE DESIGN, does idService and idMachineParts need to be primary key in the bridge
         // TODO: table serviceContracts_has_services?
 
         new CustomerDAO().insert( customer );
-        new ServiceContractDAO().insert( serviceContract );
         new ServiceContractOrderDAO().insert( SCO );
         System.out.format( "%s, %s, %s, %s, %s, %s, %s, %s, %s, %s\n", radioChoice, machine, firstName, lastName, phoneNr,
                                                                cvr, email, address, postNr, comment );
