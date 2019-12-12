@@ -1,5 +1,6 @@
 package dat19v2.projektgrafiskrep.grafiskrep.model.pos;
 
+import dat19v2.projektgrafiskrep.grafiskrep.model.Customer;
 import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
 
 
@@ -11,6 +12,7 @@ public class Sale {
     private LocalDateTime date;
     private int totalPrice;
     private ArrayList<MachinePart> items;
+    private Customer customer;
 
     public Sale() {
         this.items = new ArrayList<>();
@@ -25,6 +27,17 @@ public class Sale {
         this.date = date;
         this.totalPrice = totalPrice;
     }
+
+    public Sale(LocalDateTime date, int totalPrice, ArrayList<MachinePart> items, Customer customer) {
+        this.date = date;
+        this.totalPrice = totalPrice;
+        this.items = items;
+        this.customer = customer;
+    }
+
+    public Customer getCustomer() { return customer; }
+
+    public void setCustomer(Customer customer) { this.customer = customer; }
 
     public LocalDateTime getDate() {
         return date;
