@@ -15,20 +15,20 @@ public class SaleDAO {
                 "VALUES (?,?, LAST_INSERT_ID())";
         try (Connection con =
                      DatabaseAdapter.getConnection();
-             PreparedStatement sp = con.prepareStatement(sql1);
-             PreparedStatement ps = con.prepareStatement(sql2))
+             PreparedStatement customerPS = con.prepareStatement(sql1);
+             PreparedStatement salePS = con.prepareStatement(sql2))
         {
 
-            sp.setString(1,sale.getCustomer().getCvr());
-            sp.setString(2,sale.getCustomer().getName());
-            sp.setString(3,sale.getCustomer().getAddress());
-            sp.setString(4,sale.getCustomer().getPhoneNr());
-            sp.setString(5,sale.getCustomer().getEmail());
-            sp.executeUpdate();
+            customerPS.setString(1,sale.getCustomer().getCvr());
+            customerPS.setString(2,sale.getCustomer().getName());
+            customerPS.setString(3,sale.getCustomer().getAddress());
+            customerPS.setString(4,sale.getCustomer().getPhoneNr());
+            customerPS.setString(5,sale.getCustomer().getEmail());
+            customerPS.executeUpdate();
 
-            ps.setString(1,sale.getDate().toString());
-            ps.setInt(2,sale.getTotalPrice());
-            ps.executeUpdate();
+            salePS.setString(1,sale.getDate().toString());
+            salePS.setInt(2,sale.getTotalPrice());
+            salePS.executeUpdate();
 
         } catch (Exception e) {
             System.out.println("Err0r: " + e);

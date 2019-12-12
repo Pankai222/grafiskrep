@@ -31,7 +31,7 @@ public class CheckoutController {
     public String submitSale(Sale sale, Customer customer, HttpSession httpSession){
         httpSession.setAttribute("sale", sale);
         httpSession.setAttribute("customer", customer);
-
+        System.out.println(customer.toString());
         return "confirmation";
     }
 }
