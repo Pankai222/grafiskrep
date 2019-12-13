@@ -12,6 +12,7 @@ public class SaleDAO {
 
 
     public void insert(Sale sale) {
+
         String sql1 = "INSERT INTO customers" + "(CVR, Name, Address, Phone, Email)" + "VALUES" +
                 "(?,?,?,?,?)";
         String sql2 = "INSERT INTO sales" + "(Date, TotalPrice, customers_idcustomers)" +
@@ -19,8 +20,7 @@ public class SaleDAO {
         String sql3 = "INSERT INTO sales_has_machineParts" + "(sales_idsales, " +
                 "machineParts_idmachineParts)" + "SELECT LAST_INSERT_ID(), idmachineParts FROM " +
                 "machineParts" + " WHERE PartNr = ?";
-        try (Connection con =
-                     DatabaseAdapter.getConnection();
+        try (Connection con = DatabaseAdapter.getConnection();
              PreparedStatement customerPs = con.prepareStatement(sql1);
              PreparedStatement salePs = con.prepareStatement(sql2);
              PreparedStatement bridgeTablePs = con.prepareStatement(sql3))
@@ -38,13 +38,8 @@ public class SaleDAO {
             salePs.executeUpdate();
 
 
-            ArrayList<MachinePart> mp = new ArrayList<>();
-            mp.add(new MachinePart("A0028180"));
-            mp.add(new MachinePart("A0028181"));
-            mp.add(new MachinePart("A0066319"));
-
-            for (MachinePart s : mp) {
-                bridgeTablePs.setString(1, s.getPartNr());
+            for (MachinePart mp : sale.getItems()) {
+                bridgeTablePs.setString(1, mp.getPartNr());
                 bridgeTablePs.executeUpdate();
             }
 
