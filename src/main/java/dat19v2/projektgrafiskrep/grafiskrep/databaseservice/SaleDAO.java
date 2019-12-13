@@ -12,9 +12,6 @@ public class SaleDAO {
 
 
     public void insert(Sale sale) {
-//        System.out.println(sale.getItems().toString());
-//        System.out.println(sale.getCustomer().toString());
-        System.out.println(sale.toString());
         String sql1 = "INSERT INTO customers" + "(CVR, Name, Address, Phone, Email)" + "VALUES" +
                 "(?,?,?,?,?)";
         String sql2 = "INSERT INTO sales" + "(Date, TotalPrice, customers_idcustomers)" +
