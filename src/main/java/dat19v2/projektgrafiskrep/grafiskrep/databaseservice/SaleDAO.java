@@ -37,20 +37,16 @@ public class SaleDAO {
             salePs.setInt(2,sale.getTotalPrice());
             salePs.executeUpdate();
 
-            //TESTARRAY
-            //ArrayList<MachinePart> mp = new ArrayList<>();
-            //mp.add(new MachinePart("A0028180"));
-            //mp.add(new MachinePart("A0028181"));
-            //mp.add(new MachinePart("A0066319"));
 
-            for (MachinePart s : sale.getItems()) {
+            ArrayList<MachinePart> mp = new ArrayList<>();
+            mp.add(new MachinePart("A0028180"));
+            mp.add(new MachinePart("A0028181"));
+            mp.add(new MachinePart("A0066319"));
+
+            for (MachinePart s : mp) {
                 bridgeTablePs.setString(1, s.getPartNr());
                 bridgeTablePs.executeUpdate();
             }
-
-
-
-
 
         } catch (Exception e) {
             System.out.println("Err0r: " + e);
