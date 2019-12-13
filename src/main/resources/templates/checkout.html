@@ -69,65 +69,49 @@
                     <strong th:text="${sale.getTotalPrice()} + DKK"></strong>
                 </li>
             </ul>
-
         </div>
         <div class="col-md-8 order-md-1">
             <h4 class="mb-3">Faktureringsadresse</h4>
-            <form class="needs-validation" novalidate>
+            <form class="needs-validation" action="/submit-sale" method="post">
                 <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="firstName">Fornavn</label>
+                    <div class="col-md-12 mb-3">
+                        <label for="firstName">Navn</label>
                         <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
                         <div class="invalid-feedback">
-                            Et fornavn er påkrævet.
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="lastName">Efternavn</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                        <div class="invalid-feedback">
-                            Et efternavn er påkrævet.
+                            Et navn er påkrævet.
                         </div>
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="username">CVR</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="username" placeholder="CVR" required>
-                        <div class="invalid-feedback" style="width: 100%;">
-                            Et CVR nummer er påkrævet.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                    <label for="cvr">Cvr</label>
+                    <input type="text" class="form-control" name="cvr" id="cvr" placeholder="12345678" required>
                     <div class="invalid-feedback">
                         En email adresse er påkrævet.
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="address">Adresse</label>
-                    <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="you@example.com" required>
                     <div class="invalid-feedback">
-                        En adresse er påkrævet.
+                        En email adresse er påkrævet.
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="phoneNr">Tlf. Nummer</label>
+                    <input type="text" class="form-control" name="phoneNr" id="phoneNr" placeholder="12345678" required>
+                    <div class="invalid-feedback">
+                        En phoneNr adresse er påkrævet.
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-10 mb-3">
-                        <label for="address2">Adresse 2 <span class="text-muted">(Optional)</span></label>
-                        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-                    </div>
-                    <div class="col-md-2 mb-3">
-                        <label for="zip">Post Nr.</label>
-                        <input type="text" class="form-control" id="zip" placeholder="" required>
-                        <div class="invalid-feedback">
-                            Zip code required.
-                        </div>
+                <div class="mb-3">
+                    <label for="address">Adresse</label>
+                    <input type="text" class="form-control" name="address" id="address" placeholder="1234 Main St" required>
+                    <div class="invalid-feedback">
+                        En adresse er påkrævet.
                     </div>
                 </div>
                 <hr class="mb-4">
