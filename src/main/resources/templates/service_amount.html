@@ -56,7 +56,7 @@
     <form class="needs-validation" method="post" action="/service_amount">
     <!-- Shows numbers of services to choose -->
     <select class="form-control" id="amount" name="amount">
-        <option>Vaelg antal service:</option>
+        <option disabled selected>Vælg antal service:</option>
         <option th:each="i : ${#numbers.sequence(1, 4)}" th:value="${i}"
                 th:text="${i}"></option>ser
         <option>Ved ikke</option>

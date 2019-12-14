@@ -61,9 +61,21 @@
     </div>
 
     <!-- Shows list of machines and dates for having service on them -->
+    <!-- We default to 1 service if customer doesnt know -->
+    <div th:if="${serviceAmount} == 'Ved ikke'">
+        <select class="form-control" id="machine" name="machine">
+            <option disabled selected>Vælg maskine:</option>
+            <option th:each="machine : ${items}"
+                    th:value="${machine.getType()} + ' : ' + ${machine.getModelNr()}"
+                    th:text="${machine.getType()} + ' : ' + ${machine.getModelNr()}"></option>
+            <option>Ved ikke</option>
+        </select>
+        <input type="date">
+    </div>
+    <div th:unless="${serviceAmount} == 'Ved ikke'">
     <div class="row" th:each="amount : ${#numbers.sequence(1, serviceAmount)}">
         <select class="form-control" id="machine" name="machine">
-            <option>Vælg maskine:</option>
+            <option disabled selected>Vælg maskine:</option>
             <option th:each="machine : ${items}"
                     th:value="${machine.getType()} + ' : ' + ${machine.getModelNr()}"
                     th:text="${machine.getType()} + ' : ' + ${machine.getModelNr()}"></option>
@@ -71,6 +83,7 @@
         </select>
         <input type="date">
     </div><br>
+    </div>
 
     <h4 class="mb-3">Kundeoplysninger</h4>
     <form class="needs-validation" method="post" action="/service_order">
