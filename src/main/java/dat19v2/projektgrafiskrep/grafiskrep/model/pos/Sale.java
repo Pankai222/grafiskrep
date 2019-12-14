@@ -6,7 +6,6 @@ import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Sale {
     private LocalDateTime date;
@@ -70,4 +69,13 @@ public class Sale {
         this.items = items;
     }
 
+    @Override
+    public String toString() {
+        return "Sale{" +
+                "date=" + date +
+                ", totalPrice=" + totalPrice +
+                ", items=" + items +
+                ", customer=" + customer +
+                '}';
+    }
 }
