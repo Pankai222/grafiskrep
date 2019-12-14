@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
+    <title>GrafiskRep - Faktura</title>
     <!-- Custom fonts for this theme -->
     <link href="css/fontawesome-free/css/all.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.catalogue.css" rel="stylesheet">
+    <link href="css/freelancer.css" rel="stylesheet">
 </head>
 <body>
 <!-- Navigation -->
@@ -40,6 +45,76 @@
         </div>
     </div>
 </nav>
+<!-- Page Content -->
+<div class="container page-content">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body p-0">
+                    <div class="row p-5">
+                        <div class="col-md-6">
+                            <img src="img/Logo/grafiskreplogo.png" class="card-img">
+                        </div>
+
+                        <div class="col-md-6 text-right">
+                            <p class="font-weight-bold mb-1">Faktura #550</p>
+                            <p class="text-muted">Due to: 4 Dec, 2019</p>
+                        </div>
+                    </div>
+
+                    <hr class="my-5">
+
+                    <div class="row pb-5 p-5">
+                        <div class="col-md-6">
+                            <p class="font-weight-bold mb-4">Faktureringsoplysninger</p>
+                            <p class="mb-1" th:text="${customer.getName()}"></p>
+                            <p class="mb-1" th:text="${customer.getCvr()}"></p>
+                            <p class="mb-1" th:text="${customer.getAddress()}"></p>
+                            <p class="mb-1" th:text="${customer.getEmail()}"></p>
+                            <p class="mb-1" th:text="${customer.getPhoneNr()}"></p>
+                        </div>
+
+                        <div class="col-md-6 text-right">
+                            <p class="font-weight-bold mb-4">Betalingsoplysninger</p>
+                            <p class="mb-1"><span class="text-muted">REG NR: </span> 1234</p>
+                            <p class="mb-1"><span class="text-muted">KONTO NR: </span> 112233445566</p>
+                            <p class="mb-1"><span class="text-muted">Payment Type: </span> Bank Overførsel</p>
+                        </div>
+                    </div>
+
+                    <div class="row p-5">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="border-0 text-uppercase small font-weight-bold">Ref. Nr.</th>
+                                    <th class="border-0 text-uppercase small font-weight-bold">Produkt</th>
+                                    <th class="border-0 text-uppercase small font-weight-bold">Pris</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="MachinePart : ${saleitems}">
+                                    <td th:text="${MachinePart.getPartNr()}"></td>
+                                    <td th:text="${MachinePart.getName()}"></td>
+                                    <td th:text="${MachinePart.getPrice()} + DKK"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-row-reverse bg-dark text-white p-4">
+                        <div class="py-3 px-5 text-right">
+                            <div class="mb-2">Total</div>
+<!--                            <div class="h2 font-weight-light" th:text="${sale.getTotalPrice()} + DKK"></div>-->
+<!--                            TODO Fix totalprice. giver fejl-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Footer -->
 <footer class="footer text-center">
     <div class="container">

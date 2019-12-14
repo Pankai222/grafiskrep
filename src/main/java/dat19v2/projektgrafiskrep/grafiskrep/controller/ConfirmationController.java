@@ -1,18 +1,31 @@
 package dat19v2.projektgrafiskrep.grafiskrep.controller;
 
+import dat19v2.projektgrafiskrep.grafiskrep.model.Customer;
+import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
 import dat19v2.projektgrafiskrep.grafiskrep.model.pos.Sale;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 @Controller
 public class ConfirmationController {
-    @RequestMapping("/confirmation")
-    public String confirmation(HttpSession httpSession, Model model){
+
+    @ModelAttribute("saleitems")
+    public ArrayList<MachinePart> saleitems (HttpSession httpSession){
         Sale sale = (Sale) httpSession.getAttribute("sale");
+        return sale.getItems();
+    }
+
+    @RequestMapping("/confirmation")
+    public String confirmation(Model model, HttpSession httpSession){
+        Sale sale = (Sale) httpSession.getAttribute("sale");
+        Customer customer = (Customer) httpSession.getAttribute("customer");
         model.addAttribute("sale", sale);
+        model.addAttribute("customer", customer);
         return "confirmation";
     }
 }

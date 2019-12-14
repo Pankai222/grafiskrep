@@ -32,12 +32,12 @@ public class CheckoutController {
     @PostMapping("submit-sale")
     public String submitSale(Customer customer, HttpSession httpSession){
         Sale sale = (Sale) httpSession.getAttribute("sale");
-        httpSession.setAttribute("customer", customer);
         sale.setCustomer(customer);
         sale.setDate(LocalDateTime.now());
+        httpSession.setAttribute("customer", customer);
+        httpSession.setAttribute("sale", sale);
         SaleDAO saleDAO = new SaleDAO();
         saleDAO.insert(sale);
-        System.out.println(customer.toString());
         return "confirmation";
     }
 }

@@ -11,7 +11,6 @@
   <title>GrafiskRep - Katalog</title>
 
   <!-- Bootstrap core CSS -->
-  <!--    TODO remove navbar classes from bootstrap.order and bootstrap.catalogue-->
   <link href="css/bootstrap.catalogue.css" rel="stylesheet">
   <link href="css/freelancer.css" rel="stylesheet">
   <!-- Custom fonts for this theme -->
@@ -62,12 +61,13 @@
       <div class="col-lg-3">
 
         <h1 class="my-4">Køb Reservedele</h1>
-        <div class="list-group mb-4">
-          <tr th:each="machine : ${machines}">
-            <a href="#" class="list-group-item" th:text="${machine.getType()}">{thymeleaf.machine.name}</a>
-          </tr>
 
-        </div>
+<!--        <div class="list-group mb-4">-->
+<!--          <tr th:each="machine : ${machines}">-->
+<!--            <a href="#" class="list-group-item" th:text="${machine.getType()}">{thymeleaf.machine.name}</a>-->
+<!--          </tr>-->
+<!--        </div>-->
+<!--Machines with link to their parts-->
 
         <div class="card h-auto mb-4">
           <div class="card-body">
