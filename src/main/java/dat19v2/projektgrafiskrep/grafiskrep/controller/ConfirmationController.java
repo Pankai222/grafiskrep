@@ -24,6 +24,7 @@ public class ConfirmationController {
         Sale sale = (Sale) httpSession.getAttribute("sale");
         return sale.getItems();
     }
+
     @PostMapping("submit-sale")
     public String submitSale(Model model, Customer customer, HttpSession httpSession){
         Sale sale = (Sale) httpSession.getAttribute("sale");

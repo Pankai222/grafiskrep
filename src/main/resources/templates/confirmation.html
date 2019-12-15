@@ -14,6 +14,8 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.catalogue.css" rel="stylesheet">
     <link href="css/freelancer.css" rel="stylesheet">
+    <!-- Setting print area to invoice only with no header and footer -->
+    <link href="css/confirmation.css" rel="stylesheet">
 </head>
 <body>
 <!-- Navigation -->
@@ -46,7 +48,7 @@
     </div>
 </nav>
 <!-- Page Content -->
-<div class="container page-content">
+<div class="container page-content" id="section-to-print">
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -59,6 +61,9 @@
                         <div class="col-md-6 text-right">
                             <h4>Faktura</h4>
                             <span class="text-muted">Betalingsfrist:</span><p class="text-muted" th:text="${invoice.getPaymentDate().getDayOfMonth()} + ' ' + ${invoice.getPaymentDate().getMonth()} + ' ' + ${invoice.getPaymentDate().getYear()}"></p>
+                            <a class="btn btn-outline-light btn-social mx-1" onclick="window.print()">
+                                <i class="fab fa-fw fa-print"></i>
+                            </a>
                         </div>
                     </div>
 
