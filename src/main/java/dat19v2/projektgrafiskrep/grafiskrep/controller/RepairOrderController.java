@@ -42,9 +42,10 @@ public class RepairOrderController {
                             String email, String address, String postNr, String comment, int repairTypeIndex) {
 
         //Repair repair = new Repair();
+
         //repair.setType(repairTypes().get(repairTypeIndex));
 
-        //System.out.println(repairtype);
+        //System.out.println(repair.getType());
 
 
 

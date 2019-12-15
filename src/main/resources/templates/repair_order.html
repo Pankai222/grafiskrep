@@ -72,19 +72,18 @@
                     <option th:each="machine : ${items}"
                             th:value="${machine.getType()} + ' : ' + ${machine.getModelNr()}"
                             th:text="${machine.getType()}+' : '+${machine.getModelNr()}"></option>
-                    <option value="">Ved ikke</option>
+                    <option value="Ved ikke">Ved ikke</option>
                 </select>
             </div>
 
-            <div class="col-md-6 mb-3" th:object="${repairTypes}">
-                <select class="form-control" id="repairtype" name="repairtype" required>
+            <div class="col-md-6 mb-3">
+                <select class="form-control" id="RepairType" name="RepairType" required>
                     <option value="">Vælg reparationstype: </option>
-                    <option th:each="repairtype : ${repairTypes}"
-                            th:value="${repairtype.getName()} + ' : ' + ${repairtype.getPrice()}"
-                            th:text="${repairtype.getName()}+' : '+${repairtype.getPrice()}+',-'"></option>
-                    <option value="">Ved ikke</option>
-                    <option hidden th:value="${repairTypes.indexOf(repairtype)}" name="repairTypeIndex"></option>
-                </select>
+                    <option th:each="RepairType : ${repairTypes}"
+                            th:value="${RepairType.getName()} + ' : ' + ${RepairType.getPrice()}"
+                            th:text="${RepairType.getName()}+' : '+${RepairType.getPrice()}+'DKK'"></option>
+                    <option value="Ved ikke">Ved ikke</option>
+                </select >
             </div>
 
             <label class="col-md-2" for="repairDate">Hvilken dato ønsker du reparation?</label>

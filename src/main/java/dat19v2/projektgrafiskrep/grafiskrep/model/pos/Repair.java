@@ -37,6 +37,22 @@ public class Repair {
         return type.getPrice() + partTotalPrice;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
     public int getPrice() {
         return price;
     }
