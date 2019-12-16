@@ -1,5 +1,6 @@
 package dat19v2.projektgrafiskrep.grafiskrep.databaseservice;
 
+import dat19v2.projektgrafiskrep.grafiskrep.model.service.Service;
 import dat19v2.projektgrafiskrep.grafiskrep.model.service.ServiceContractOrder;
 
 import java.sql.Connection;
@@ -9,13 +10,32 @@ import java.sql.PreparedStatement;
 public class ServiceContractOrderDAO {
 
     public void insert(ServiceContractOrder SCO) {
-        String sql = "INSERT INTO serviceContractOrders" + "(Date)" + "VALUES(?)";
+        String sql1 = "INSERT INTO customers" + "(CVR, Name, Address, Phone, Email)" + "VALUES" +
+                "(?,?,?,?,?)";
+        String sql2 = "INSERT INTO serviceContractOrders" +
+                "(customers_idcustomers, date, machines_idmachines)" +
+                "SELECT LAST_INSERT_ID(), ?, idmachines FROM machines WHERE " +
+                "ModelNr = ?";
 
         try (Connection con = DatabaseAdapter.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+             PreparedStatement customerPs = con.prepareStatement(sql1);
+             PreparedStatement serviceOrderPs = con.prepareStatement(sql2)) {
 
-            ps.setString(1,SCO.getDate().toString());
-            ps.executeUpdate();
+            customerPs.setString( 1, SCO.getCustomer().getCvr());
+            customerPs.setString( 2, SCO.getCustomer().getName());
+            customerPs.setString( 3, SCO.getCustomer().getAddress());
+            customerPs.setString( 4, SCO.getCustomer().getPhoneNr());
+            customerPs.setString(5, SCO.getCustomer().getEmail());
+            customerPs.executeUpdate();
+
+            for ( Service service : SCO.getServices() ) {
+                serviceOrderPs.setString( 1, service.getDate().toString() );
+                serviceOrderPs.setString(2, service.getMachine().getModelNr() );
+                serviceOrderPs.executeUpdate();
+            }
+
+            serviceOrderPs.setString( 2, SCO.getDate().toString() );
+            serviceOrderPs.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error: " + e);
         }

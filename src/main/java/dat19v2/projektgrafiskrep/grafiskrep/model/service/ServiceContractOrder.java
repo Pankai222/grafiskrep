@@ -34,4 +34,12 @@ public class ServiceContractOrder {
     public void setDate(LocalDateTime date) {
         this.date = date;
     }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer( Customer customer ) {
+        this.customer = customer;
+    }
 }

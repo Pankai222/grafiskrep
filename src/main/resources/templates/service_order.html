@@ -13,21 +13,13 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <!-- Bootstrap core CSS -->
-<!--    TODO remove navbar classes from bootstrap.order and bootstrap.catalogue-->
+    <!--    TODO remove navbar classes from bootstrap.order and bootstrap.catalogue-->
     <link href="css/bootstrap.order.css" rel="stylesheet">
     <link href="css/bootstrap.catalogue.css" rel="stylesheet">
     <link href="css/freelancer.css" rel="stylesheet">
 
-    <script type="text/javascript">
-        function clicked() {
-            alert('Service order modtaget');
-        }
-    </script>
-
 </head>
 <body>
-
-<!-- TODO: change the path on all headers to service_amount instead of service_order -->
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
@@ -70,99 +62,100 @@
     <!-- We default to 1 service if customer doesnt know -->
     <form class="needs-validation" method="post" action="/service_order">
 
-    <div th:if="${serviceAmount} == 'Ved ikke' or ${serviceAmount} == '1'">
-        <select class="form-control" id="machine" name="machine1">
-            <option disabled selected>Vælg maskine:</option>
-            <option th:each="machine : ${items}"
-                    th:value="${machine.getType()} + ' : ' + ${machine.getModelNr()}"
-                    th:text="${machine.getType()} + ' : ' + ${machine.getModelNr()}"></option>
-            <option>Ved ikke</option>
-        </select>
-        <input type="date" name="date">
-    </div>
-    <div th:unless="${serviceAmount} == 'Ved ikke' or ${serviceAmount} == '1'">
-    <div class="row" th:each="amount : ${#numbers.sequence(1, serviceAmount)}" th:name="machine + ${amount}">
-        <h4 th:text="${amount}"></h4>
-        <select class="form-control" id="machines" th:name="machine + ${amount}">
-            <option disabled selected>Vælg maskine:</option>
-            <option th:each="machine : ${items}"
-                    th:value="${machine.getType()} + ' : ' + ${machine.getModelNr()}"
-                    th:text="${machine.getType()} + ' : ' + ${machine.getModelNr()}"></option>
-            <option>Ved ikke</option>
-        </select>
-        <input type="date" th:name="date + ${amount}">
-    </div><br>
-    </div>
+        <div th:if="${serviceAmount} == 'Ved ikke' or ${serviceAmount} == '1'">
+            <select class="form-control" id="machine" name="machine1">
+                <option disabled selected>Vælg maskine:</option>
+                <option th:each="machine : ${items}"
+                        th:value="${machine.getType()} + ' : ' + ${machine.getModelNr()}"
+                        th:text="${machine.getType()} + ' : ' + ${machine.getModelNr()}"></option>
+                <option>Ved ikke</option>
+            </select>
+            <input type="datetime-local" name="date">
+        </div>
+        <div th:unless="${serviceAmount} == 'Ved ikke' or ${serviceAmount} == '1'">
+            <div class="row"
+                 th:each="amount : ${#numbers.sequence(1, serviceAmount)}"
+                 th:name="machine + ${amount} + Index">
+                <h4 th:text="${amount}"></h4>
+                <select class="form-control" id="machines" th:name="machine + ${amount} + Index">
+                    <option disabled selected>Vælg maskine:</option>
+                    <option th:each="machine : ${items}"
+                            th:value="${items.indexOf( machine )}"
+                            th:text="${machine.getType()} + ' : ' + ${machine.getModelNr()}"></option>
+                    <option>Ved ikke</option>
+                </select>
+                <input type="datetime-local" th:name="date + ${amount}">
+            </div><br>
+        </div>
 
-    <h4 class="mb-3">Kundeoplysninger</h4>
-    <form class="needs-validation" method="post" action="/service_order">
+        <h4 class="mb-3">Kundeoplysninger</h4>
         <div class="col-md-8 order-md-1" style="display: block;margin-left:
         auto; margin-right: auto">
         </div>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="name">Navn</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="" value="" autofocus required>
-                        <div class="invalid-feedback">
-                            Et fornavn er påkrævet.
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="phoneNr">Telefonnummer</label>
-                        <input type="text" class="form-control" id="phoneNr" name="phoneNr" placeholder="" value="" required>
-                        <div class="invalid-feedback">
-                            Telefonnummer er påkrævet.
-                        </div>
-                    </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="name">Navn</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                    Et fornavn er påkrævet.
                 </div>
-
-                <div class="mb-3">
-                    <label for="username">CVR</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="username" name="cvr" placeholder="CVR" required>
-                        <div class="invalid-feedback">
-                            Et CVR nummer er påkrævet.
-                        </div>
-                    </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="phoneNr">Telefonnummer</label>
+                <input type="text" class="form-control" id="phoneNr" name="phoneNr" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                    Telefonnummer er påkrævet.
                 </div>
-
-                <div class="mb-3">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
-                    <div class="invalid-feedback">
-                        En email adresse er påkrævet.
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="address">Adresse</label>
-                    <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St" required>
-                    <div class="invalid-feedback">
-                        En adresse er påkrævet.
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-10 mb-3">
-                        <label for="address2">Adresse 2 <span class="text-muted">(Optional)</span></label>
-                        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-                    </div>
-                    <div class="col-md-2 mb-3">
-                        <label for="zip">Post Nr.</label>
-                        <input type="text" class="form-control" id="zip" name="postNr" placeholder="" required>
-                        <div class="invalid-feedback">
-                            Zip code required.
-                        </div>
-                    </div>
-                    <div class="col-md 10 mb-3">
-                        <label for="comment">Kommentar</label>
-                        <textarea type="text" class="form-control" id="comment" name="comment" placeholder="Din kommentar"></textarea>
-                    </div>
-                </div>
-                <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" onclick="clicked()" id="submitButton" type="submit">Bestil Service</button>
-            </form>
+            </div>
         </div>
+
+        <div class="mb-3">
+            <label for="username">CVR</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="username" name="cvr" placeholder="CVR" required>
+                <div class="invalid-feedback">
+                    Et CVR nummer er påkrævet.
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
+            <div class="invalid-feedback">
+                En email adresse er påkrævet.
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="address">Adresse</label>
+            <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St" required>
+            <div class="invalid-feedback">
+                En adresse er påkrævet.
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10 mb-3">
+                <label for="address2">Adresse 2 <span class="text-muted">(Optional)</span></label>
+                <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+            </div>
+            <div class="col-md-2 mb-3">
+                <label for="zip">Post Nr.</label>
+                <input type="text" class="form-control" id="zip" name="postNr" placeholder="" required>
+                <div class="invalid-feedback">
+                    Zip code required.
+                </div>
+            </div>
+            <div class="col-md 10 mb-3">
+                <label for="comment">Kommentar</label>
+                <textarea type="text" class="form-control" id="comment" name="comment" placeholder="Din kommentar"></textarea>
+            </div>
+        </div>
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" id="submitButton" type="submit">Bestil Service</button>
+    </form>
+</div>
 <!-- Footer -->
 <footer class="footer text-center">
     <div class="container">
