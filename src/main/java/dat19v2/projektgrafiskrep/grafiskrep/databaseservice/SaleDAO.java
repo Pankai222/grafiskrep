@@ -1,18 +1,16 @@
 package dat19v2.projektgrafiskrep.grafiskrep.databaseservice;
 
-import dat19v2.projektgrafiskrep.grafiskrep.model.Customer;
 import dat19v2.projektgrafiskrep.grafiskrep.model.pos.Sale;
 import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.ArrayList;
+
 
 public class SaleDAO {
 
 
     public void insert(Sale sale) {
-
         String sql1 = "INSERT INTO customers" + "(CVR, Name, Address, Phone, Email)" + "VALUES" +
                 "(?,?,?,?,?)";
         String sql2 = "INSERT INTO sales" + "(Date, TotalPrice, customers_idcustomers)" +
@@ -36,7 +34,6 @@ public class SaleDAO {
             salePs.setString(1,sale.getDate().toString());
             salePs.setInt(2,sale.getTotalPrice());
             salePs.executeUpdate();
-
 
             for (MachinePart mp : sale.getItems()) {
                 bridgeTablePs.setString(1, mp.getPartNr());
