@@ -35,16 +35,21 @@ public class RepairOrderController {
     }
 
     @PostMapping( "submit-order" )
-    public String sendOrder(Model model, String repairDate, String machine, String repairtype, String firstName, String lastName, String phoneNr, String cvr,
+    public String sendOrder(Model model, String repairDate, int repairtypeIndex, int machineIndex, String firstName, String lastName, String phoneNr, String cvr,
                             String email, String address, String postNr, String comment) {
 
 
-        //Customer customer = new Customer()
-        //Repair repair = new Repair(repairtype, machine, customer ,repairDate);
+        Customer customer = new Customer(cvr, firstName+" "+lastName, address, phoneNr, email);
+
+        RepairType repairType = repairTypes().get(repairtypeIndex);
+
+        Machine machine = items().get(machineIndex);
+        System.out.println(items().get(machineIndex));
+        Repair repair = new Repair(repairType, machine, customer, LocalDateTime.parse(repairDate));
 
         RepairOrdersDAO repairOrdersDAO = new RepairOrdersDAO();
 
-        //repairOrdersDAO.insert(repair);
+        repairOrdersDAO.insert(repair);
 
         System.out.println();
 

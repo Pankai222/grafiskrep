@@ -18,8 +18,16 @@
     <link href="css/bootstrap.catalogue.css" rel="stylesheet">
     <link href="css/freelancer.css" rel="stylesheet">
 
+    <script type="text/javascript">
+        function clicked() {
+            alert('Service order modtaget');
+        }
+    </script>
+
 </head>
 <body>
+
+<!-- TODO: change the path on all headers to service_amount instead of service_order -->
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
@@ -67,8 +75,7 @@
             <option disabled selected>Vælg maskine:</option>
             <option th:each="machine : ${items}"
                     th:value="${machine.getType()} + ' : ' + ${machine.getModelNr()}"
-                    th:text="${machine.getType()} + ' : ' + ${machine.getModelNr()}">
-            </option>
+                    th:text="${machine.getType()} + ' : ' + ${machine.getModelNr()}"></option>
             <option>Ved ikke</option>
         </select>
         <input type="date" name="date">
@@ -88,13 +95,14 @@
     </div>
 
     <h4 class="mb-3">Kundeoplysninger</h4>
+    <form class="needs-validation" method="post" action="/service_order">
         <div class="col-md-8 order-md-1" style="display: block;margin-left:
         auto; margin-right: auto">
         </div>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="name">Navn</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="" value="" required>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="" value="" autofocus required>
                         <div class="invalid-feedback">
                             Et fornavn er påkrævet.
                         </div>
@@ -152,7 +160,7 @@
                     </div>
                 </div>
                 <hr class="mb-4">
-                <button class="btn btn-primary btn-lg btn-block" id="submitButton" type="submit">Bestil Service</button>
+                <button class="btn btn-primary btn-lg btn-block" onclick="clicked()" id="submitButton" type="submit">Bestil Service</button>
             </form>
         </div>
 <!-- Footer -->
