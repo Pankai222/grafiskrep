@@ -16,13 +16,16 @@ import java.util.ArrayList;
 
 @Controller
 public class ConfirmationController {
-
+    //  Adds the model saleitems, which returns an arraylist of machineparts, for use with thymeleaf.
     @ModelAttribute("saleitems")
     public ArrayList<MachinePart> saleitems (HttpSession httpSession){
         Sale sale = (Sale) httpSession.getAttribute("sale");
         return sale.getItems();
     }
 
+    //  The action called when the customer has filled in info on checkout page, which then returns the confirmation view.
+    //  The sale is retrieved from httpsession and the current datetime is added, then an invoice is created with the sale
+    //  object. The sale is inserted into the database.
     @PostMapping("submit-sale")
     public String submitSale(Model model, Customer customer, HttpSession httpSession){
         Sale sale = (Sale) httpSession.getAttribute("sale");

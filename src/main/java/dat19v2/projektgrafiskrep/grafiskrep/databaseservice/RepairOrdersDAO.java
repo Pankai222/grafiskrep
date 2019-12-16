@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 
 public class RepairOrdersDAO {
 
+
     public void insert(Repair repair) {
         String sql1 = "INSERT INTO customers" + "(CVR, Name, Address, Phone, Email)" + "VALUES" +
                 "(?,?,?,?,?)";
