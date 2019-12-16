@@ -12,11 +12,11 @@ import java.time.LocalDateTime;
 public class IndexController {
     @RequestMapping("/index")
     public String index(){
-        //TEST
-        //Sale s = new Sale(LocalDateTime.now(), 200);
-        //s.setCustomer(new Customer("1234", "Lol", "hejsa", "hdawdo", "woop"));
-        //SaleDAO sf = new SaleDAO();
-        //sf.insert(s);
+
+        Sale s = new Sale(LocalDateTime.now(), 200);
+        s.setCustomer(new Customer("1234", "Lol", "hejsa", "hdawdo", "woop"));
+        SaleDAO sf = new SaleDAO();
+        sf.insert(s);
         return "index";
     }
 }

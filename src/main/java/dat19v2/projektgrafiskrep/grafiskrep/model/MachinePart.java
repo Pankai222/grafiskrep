@@ -16,9 +16,6 @@ public class MachinePart {
         this.price = price;
     }
 
-    public MachinePart(String partNr) {
-        this.partNr = partNr;
-    }
 
     public MachinePart() {
     }
