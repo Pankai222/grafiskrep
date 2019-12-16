@@ -9,13 +9,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class RepairTypeDAO {
-    // NOTE: I would strongly advise for using more specific exceptions
-    // than the general one
-    // HERE IS WHY:
-    // * We dont know what we are handling, anything could have caused it
-    // * common practice is the let the exception "bubble up" if we cant
-    // handle it here
-    // * be able to give a better reason for why it crashed
 
     // inserts repair types into the database
     public void insert(RepairType repairType ) {
@@ -42,6 +35,7 @@ public class RepairTypeDAO {
     public void select() {
     }
 
+//Returns an arraylist of all the repairtypes in the database.
     public ArrayList<RepairType> selectAll() {
         ArrayList<RepairType> repairTypes = new ArrayList<>();
         String sql = "SELECT * FROM repairtypes";

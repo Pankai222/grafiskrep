@@ -18,28 +18,30 @@ import java.util.ArrayList;
 @Controller
 public class CatalogueController {
 
+    //  Adds the model catalogue, which creates a catalogue object and sets the items to an arraylist of machineparts
+    //  from database, for use with thymeleaf.
     @ModelAttribute("catalogue")
     public Catalogue catalogue(){
         Catalogue catalogue = new Catalogue();
         catalogue.setItems(new MachinePartDAO().selectAll());
         return catalogue;
     }
-
+    //  Adds the model items, which returns an arraylist of machineparts from database, for use with thymeleaf.
     @ModelAttribute("items")
     public ArrayList<MachinePart> items(){
         return new MachinePartDAO().selectAll();
     }
-
+    //  Adds the model machines, which returns an arraylist of machines from database, for use with thymeleaf.
     @ModelAttribute("machines")
     public ArrayList<Machine> machines(){
         return new MachineDAO().selectAll();
     }
-
+    //    Adds the model sale, which returns a new sale object.
     @ModelAttribute("sale")
     public Sale sale(){
         return new Sale();
     }
-
+    //    Sets two httpsession attributes. One to a new sale, and one adds the catalogue when the catalogue page is visited.
     @RequestMapping("/catalogue")
     public String catalogue(@ModelAttribute("catalogue") Catalogue catalogue, @ModelAttribute("sale") Sale sale, @ModelAttribute("machines") ArrayList<Machine> machines, HttpSession httpSession){
         httpSession.setAttribute("sale", new Sale());
@@ -47,6 +49,8 @@ public class CatalogueController {
         return "catalogue";
     }
 
+    //    This method is what enables the catalogue view to add machinepart items to a cart.
+    //    The page is reloaded each time, as the client needs to connect to server, to get the updated sale object.
     @PostMapping ("add-to-cart")
     public String addToCart(@ModelAttribute("catalogue") Catalogue catalogue, Model model, HttpSession httpSession, int itemIndex){
         Sale sale = (Sale) httpSession.getAttribute("sale");
