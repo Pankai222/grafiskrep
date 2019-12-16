@@ -7,19 +7,19 @@ import java.sql.PreparedStatement;
 
 public class RepairDAO {
 
-    public void insert(Repair repair) {
-        String sql = "INSERT INTO repairs" + "(Price)" + "VALUES(?)";
-
-        try (Connection con = DatabaseAdapter.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setInt(2, repair.getPrice());
-            ps.executeUpdate();
-
-        } catch (Exception e) {
-            System.out.println("Error" + e);
-        }
-    }
+//    public void insert(Repair repair) {
+//        String sql = "INSERT INTO repairs" + "(Price)" + "VALUES(?)";
+//
+//        try (Connection con = DatabaseAdapter.getConnection();
+//             PreparedStatement ps = con.prepareStatement(sql)) {
+//
+//            ps.setInt(2, repair.getPrice());
+//            ps.executeUpdate();
+//
+//        } catch (Exception e) {
+//            System.out.println("Error" + e);
+//        }
+//    }
 
     public void delete() {
     }

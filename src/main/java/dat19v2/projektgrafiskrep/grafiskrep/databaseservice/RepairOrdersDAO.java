@@ -12,11 +12,13 @@ public class RepairOrdersDAO {
         String sql1 = "INSERT INTO customers" + "(CVR, Name, Address, Phone, Email)" + "VALUES" +
                 "(?,?,?,?,?)";
         String sql2 = "INSERT INTO repairorders" + "(date, customers_idcustomers, machines_idmachines)" +
-                "VALUES (?, LAST_INSERT_ID(), idmachines FROM machines WHERE ModelNr = ?)";
+                "VALUES (?, LAST_INSERT_ID(), SELECT idmachines FROM machines WHERE ModelNr = ?)";
+        String sql3 = "INSERT INTO repairorders" + "(date, customers_idcustomers, machines_idmachines)" +
+                "SELECT ?, LAST_INSERT_ID(), idmachines FROM machines WHERE ModelNr = ?";
 
         try (Connection con = DatabaseAdapter.getConnection();
              PreparedStatement customerPs = con.prepareStatement(sql1);
-             PreparedStatement repairOrderPs = con.prepareStatement(sql2))
+             PreparedStatement repairOrderPs = con.prepareStatement(sql3))
         {
 
             customerPs.setString(1,repair.getCustomer().getCvr());

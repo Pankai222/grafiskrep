@@ -1,20 +1,20 @@
-/* Removes the clear button from date inputs */
-input[type="date"]::-webkit-clear-button {
+/* Removes the clear button from datetime-local inputs */
+input[type="datetime-local"]::-webkit-clear-button {
     display: none;
 }
 
 /* Removes the spin button */
-input[type="date"]::-webkit-inner-spin-button {
+input[type="datetime-local"]::-webkit-inner-spin-button {
     display: none;
 }
 
 /* Always display the drop down caret */
-input[type="date"]::-webkit-calendar-picker-indicator {
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     color: #2c3e50;
 }
 
-/* A few custom styles for date inputs */
-input[type="date"] {
+/* A few custom styles for datetime-local inputs */
+input[type="datetime-local"] {
     appearance: none;
     -webkit-appearance: none;
     color: #95a5a6;
@@ -27,7 +27,7 @@ input[type="date"] {
     visibility: visible !important;
 }
 
-input[type="date"], focus {
+input[type="datetime-local"], focus {
     color: #95a5a6;
     box-shadow: none;
     -webkit-box-shadow: none;
