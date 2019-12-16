@@ -9,7 +9,8 @@ import java.sql.PreparedStatement;
 
 public class SaleDAO {
 
-
+//Inserts into 3 tables. The Customer, then the sale with the customer id as foreign key,
+// and finally into the bridge many to many table between sales and machineparts.
     public void insert(Sale sale) {
         String sql1 = "INSERT INTO customers" + "(CVR, Name, Address, Phone, Email)" + "VALUES" +
                 "(?,?,?,?,?)";

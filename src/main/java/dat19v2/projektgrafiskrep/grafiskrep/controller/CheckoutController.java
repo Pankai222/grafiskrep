@@ -11,13 +11,14 @@ import java.util.ArrayList;
 
 @Controller
 public class CheckoutController {
-
+    //  Adds the model saleitems, which returns an arraylist of machineparts, for use with thymeleaf.
     @ModelAttribute("saleitems")
     public ArrayList<MachinePart> saleitems (HttpSession httpSession){
         Sale sale = (Sale) httpSession.getAttribute("sale");
         return sale.getItems();
     }
-
+    //  returns the checkout view when /checkout is visited.
+    //  Gets the sale from httpsession and adds it to model again, to display it on checkout view.
     @RequestMapping("/checkout")
     public String checkout(Model model, HttpSession httpSession){
         Sale sale = (Sale) httpSession.getAttribute("sale");

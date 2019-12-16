@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 
 public class ServiceContractDAO {
 
+//    Inserts a servicecontract object into the database.
     public void insert(ServiceContract serviceContract) {
         String sql = "INSERT INTO serviceContracts" + "(StartDate, EndDate)" + "VALUES(?,?)";
         try (Connection con = DatabaseAdapter.getConnection();
