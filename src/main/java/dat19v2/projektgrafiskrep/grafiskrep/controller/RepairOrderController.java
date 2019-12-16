@@ -1,9 +1,6 @@
 package dat19v2.projektgrafiskrep.grafiskrep.controller;
 
-import dat19v2.projektgrafiskrep.grafiskrep.databaseservice.CustomerDAO;
-import dat19v2.projektgrafiskrep.grafiskrep.databaseservice.MachineDAO;
-import dat19v2.projektgrafiskrep.grafiskrep.databaseservice.RepairTypeDAO;
-import dat19v2.projektgrafiskrep.grafiskrep.databaseservice.ServiceContractOrderDAO;
+import dat19v2.projektgrafiskrep.grafiskrep.databaseservice.*;
 import dat19v2.projektgrafiskrep.grafiskrep.model.Customer;
 import dat19v2.projektgrafiskrep.grafiskrep.model.Machine;
 import dat19v2.projektgrafiskrep.grafiskrep.model.pos.Repair;
@@ -39,15 +36,17 @@ public class RepairOrderController {
 
     @PostMapping( "submit-order" )
     public String sendOrder(Model model, String repairDate, String machine, String repairtype, String firstName, String lastName, String phoneNr, String cvr,
-                            String email, String address, String postNr, String comment, int repairTypeIndex) {
-
-        //Repair repair = new Repair();
-
-        //repair.setType(repairTypes().get(repairTypeIndex));
-
-        //System.out.println(repair.getType());
+                            String email, String address, String postNr, String comment) {
 
 
+        //Customer customer = new Customer()
+        //Repair repair = new Repair(repairtype, machine, customer ,repairDate);
+
+        RepairOrdersDAO repairOrdersDAO = new RepairOrdersDAO();
+
+        //repairOrdersDAO.insert(repair);
+
+        System.out.println();
 
         return "/repair_order";
     }

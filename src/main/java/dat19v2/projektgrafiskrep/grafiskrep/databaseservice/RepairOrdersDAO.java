@@ -11,8 +11,8 @@ public class RepairOrdersDAO {
     public void insert(Repair repair) {
         String sql1 = "INSERT INTO customers" + "(CVR, Name, Address, Phone, Email)" + "VALUES" +
                 "(?,?,?,?,?)";
-        String sql2 = "INSERT INTO repairorders" + "(date, price, customers_idcustomers, machines_idmachines)" +
-                "VALUES (?,?, LAST_INSERT_ID(), idmachines FROM machines WHERE ModelNr = ?)";
+        String sql2 = "INSERT INTO repairorders" + "(date, customers_idcustomers, machines_idmachines)" +
+                "VALUES (?, LAST_INSERT_ID(), idmachines FROM machines WHERE ModelNr = ?)";
 
         try (Connection con = DatabaseAdapter.getConnection();
              PreparedStatement customerPs = con.prepareStatement(sql1);
@@ -27,8 +27,7 @@ public class RepairOrdersDAO {
             customerPs.executeUpdate();
 
             repairOrderPs.setString(1,repair.getDate().toString());
-            repairOrderPs.setInt(2,repair.getPrice());
-            repairOrderPs.setString(3,repair.getMachine().getModelNr());
+            repairOrderPs.setString(2,repair.getMachine().getModelNr());
             repairOrderPs.executeUpdate();
 
         } catch (Exception e) {

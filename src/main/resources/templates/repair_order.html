@@ -70,7 +70,7 @@
                 <select class="form-control" id="machine" name="machine" required>
                     <option value="">Vælg maskine: </option>
                     <option th:each="machine : ${items}"
-                            th:value="${machine.getType()} + ' : ' + ${machine.getModelNr()}"
+                            th:value="${machine.getModelNr()}"
                             th:text="${machine.getType()}+' : '+${machine.getModelNr()}"></option>
                     <option value="Ved ikke">Ved ikke</option>
                 </select>
@@ -80,7 +80,7 @@
                 <select class="form-control" id="RepairType" name="RepairType" required>
                     <option value="">Vælg reparationstype: </option>
                     <option th:each="RepairType : ${repairTypes}"
-                            th:value="${RepairType.getName()} + ' : ' + ${RepairType.getPrice()}"
+                            th:value="${RepairType.getName()}"
                             th:text="${RepairType.getName()}+' : '+${RepairType.getPrice()}+'DKK'"></option>
                     <option value="Ved ikke">Ved ikke</option>
                 </select >
