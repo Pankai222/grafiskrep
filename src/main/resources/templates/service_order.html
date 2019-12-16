@@ -68,26 +68,29 @@
 
     <!-- Shows list of machines and dates for having service on them -->
     <!-- We default to 1 service if customer doesnt know -->
-    <div th:if="${serviceAmount} == 'Ved ikke'">
-        <select class="form-control" id="machine" name="machine">
+    <form class="needs-validation" method="post" action="/service_order">
+
+    <div th:if="${serviceAmount} == 'Ved ikke' or ${serviceAmount} == '1'">
+        <select class="form-control" id="machine" name="machine1">
             <option disabled selected>Vælg maskine:</option>
             <option th:each="machine : ${items}"
                     th:value="${machine.getType()} + ' : ' + ${machine.getModelNr()}"
                     th:text="${machine.getType()} + ' : ' + ${machine.getModelNr()}"></option>
             <option>Ved ikke</option>
         </select>
-        <input type="date">
+        <input type="date" name="date">
     </div>
-    <div th:unless="${serviceAmount} == 'Ved ikke'">
-    <div class="row" th:each="amount : ${#numbers.sequence(1, serviceAmount)}">
-        <select class="form-control" id="machine" name="machine">
+    <div th:unless="${serviceAmount} == 'Ved ikke' or ${serviceAmount} == '1'">
+    <div class="row" th:each="amount : ${#numbers.sequence(1, serviceAmount)}" th:name="machine + ${amount}">
+        <h4 th:text="${amount}"></h4>
+        <select class="form-control" id="machines" th:name="machine + ${amount}">
             <option disabled selected>Vælg maskine:</option>
             <option th:each="machine : ${items}"
                     th:value="${machine.getType()} + ' : ' + ${machine.getModelNr()}"
                     th:text="${machine.getType()} + ' : ' + ${machine.getModelNr()}"></option>
             <option>Ved ikke</option>
         </select>
-        <input type="date">
+        <input type="date" th:name="date + ${amount}">
     </div><br>
     </div>
 
@@ -125,7 +128,7 @@
 
                 <div class="mb-3">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com" required>
                     <div class="invalid-feedback">
                         En email adresse er påkrævet.
                     </div>

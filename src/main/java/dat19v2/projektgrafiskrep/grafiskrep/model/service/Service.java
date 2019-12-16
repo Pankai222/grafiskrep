@@ -10,15 +10,13 @@ import java.util.List;
 public class Service {
     private LocalDateTime date;
     private Machine machine;
-    private ArrayList<MachinePart> machineParts;
 
     public Service() {
     }
 
-    public Service(LocalDateTime date, Machine machine, ArrayList<MachinePart> machineParts) {
+    public Service(LocalDateTime date, Machine machine) {
         this.date = date;
         this.machine = machine;
-        this.machineParts = machineParts;
     }
 
     public LocalDateTime getDate() {
@@ -35,13 +33,5 @@ public class Service {
 
     public void setMachine(Machine machine) {
         this.machine = machine;
-    }
-
-    public List<MachinePart> getMachineParts() {
-        return machineParts;
-    }
-
-    public void setMachineParts(ArrayList<MachinePart> machineParts) {
-        this.machineParts = machineParts;
     }
 }
