@@ -1,12 +1,11 @@
 package dat19v2.projektgrafiskrep.grafiskrep.databaseservice;
 
-import dat19v2.projektgrafiskrep.grafiskrep.model.Customer;
 import dat19v2.projektgrafiskrep.grafiskrep.model.pos.Sale;
 import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.ArrayList;
+
 
 public class SaleDAO {
 
@@ -36,11 +35,6 @@ public class SaleDAO {
             salePs.setInt(2,sale.getTotalPrice());
             salePs.executeUpdate();
 
-            //TESTARRAY
-            //ArrayList<MachinePart> mp = new ArrayList<>();
-            //mp.add(new MachinePart("A0028180"));
-            //mp.add(new MachinePart("A0028181"));
-            //mp.add(new MachinePart("A0066319"));
             for (MachinePart mp : sale.getItems()) {
                 bridgeTablePs.setString(1, mp.getPartNr());
                 bridgeTablePs.executeUpdate();

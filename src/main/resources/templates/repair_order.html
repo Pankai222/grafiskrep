@@ -58,7 +58,7 @@
 
 <!--Page Content-->
 <div class="page-section container">
-    <form class="needs-validation" method="post" action="/service_order">
+    <form class="needs-validation" method="post" action="/submit-order">
         <div class="py-5 text-center">
             <h2>Reparation</h2> <br>
         </div>
@@ -67,13 +67,23 @@
         <div class="row">
 
             <div class="col-md-6 mb-3" th:object="${items}">
-                <select class="form-control" id="machine" name="machine">
-                    <option value="">Vaelg maskine: </option>
+                <select class="form-control" id="machine" name="machine" required>
+                    <option value="">Vælg maskine: </option>
                     <option th:each="machine : ${items}"
-                            th:value="${machine.getType()} + ' : ' + ${machine.getModelNr()}"
+                            th:value="${machine.getModelNr()}"
                             th:text="${machine.getType()}+' : '+${machine.getModelNr()}"></option>
-                    <option value="">Ved ikke</option>
+                    <option value="Ved ikke">Ved ikke</option>
                 </select>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <select class="form-control" id="RepairType" name="RepairType" required>
+                    <option value="">Vælg reparationstype: </option>
+                    <option th:each="RepairType : ${repairTypes}"
+                            th:value="${RepairType.getName()}"
+                            th:text="${RepairType.getName()}+' : '+${RepairType.getPrice()}+'DKK'"></option>
+                    <option value="Ved ikke">Ved ikke</option>
+                </select >
             </div>
 
             <label class="col-md-2" for="repairDate">Hvilken dato ønsker du reparation?</label>
@@ -191,7 +201,6 @@
                 <p class="lead mb-0">service@GrafiskRep.dk</p>
                 <p class="lead mb-0">31 38 68 62</p>
             </div>
-
         </div>
     </div>
 </footer>

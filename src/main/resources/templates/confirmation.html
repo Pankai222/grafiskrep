@@ -14,6 +14,8 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.catalogue.css" rel="stylesheet">
     <link href="css/freelancer.css" rel="stylesheet">
+    <!-- Setting print area to invoice only with no header and footer -->
+    <link href="css/confirmation.css" rel="stylesheet">
 </head>
 <body>
 <!-- Navigation -->
@@ -46,7 +48,7 @@
     </div>
 </nav>
 <!-- Page Content -->
-<div class="container page-content">
+<div class="container page-content" id="section-to-print">
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -57,8 +59,11 @@
                         </div>
 
                         <div class="col-md-6 text-right">
-                            <p class="font-weight-bold mb-1">Faktura #550</p>
-                            <p class="text-muted">Due to: 4 Dec, 2019</p>
+                            <h4>Faktura</h4>
+                            <span class="text-muted">Betalingsfrist:</span><p class="text-muted" th:text="${invoice.getPaymentDate().getDayOfMonth()} + ' ' + ${invoice.getPaymentDate().getMonth()} + ' ' + ${invoice.getPaymentDate().getYear()}"></p>
+                            <a class="btn btn-outline-light btn-social mx-1" onclick="window.print()">
+                                <i class="fab fa-fw fa-print"></i>
+                            </a>
                         </div>
                     </div>
 
@@ -76,9 +81,9 @@
 
                         <div class="col-md-6 text-right">
                             <p class="font-weight-bold mb-4">Betalingsoplysninger</p>
-                            <p class="mb-1"><span class="text-muted">REG NR: </span> 1234</p>
-                            <p class="mb-1"><span class="text-muted">KONTO NR: </span> 112233445566</p>
-                            <p class="mb-1"><span class="text-muted">Payment Type: </span> Bank Overførsel</p>
+                            <div class="mb-1"><span class="text-muted">REG NR: </span> <p th:text="${invoice.getRegNr()}"></p></div>
+                            <div class="mb-1"><span class="text-muted">KONTO NR: </span> <p th:text="${invoice.getKontoNr()}"></p></div>
+                            <div class="mb-1"><span class="text-muted">Payment Type: </span> Bank Overførsel</div>
                         </div>
                     </div>
 
@@ -106,8 +111,7 @@
                     <div class="d-flex flex-row-reverse bg-dark text-white p-4">
                         <div class="py-3 px-5 text-right">
                             <div class="mb-2">Total</div>
-<!--                            <div class="h2 font-weight-light" th:text="${sale.getTotalPrice()} + DKK"></div>-->
-<!--                            TODO Fix totalprice. giver fejl-->
+                                <h2 class="font-weight-light"  th:text="${invoice.getSaleInfo().getTotalPrice()} + DKK"></h2>
                         </div>
                     </div>
                 </div>

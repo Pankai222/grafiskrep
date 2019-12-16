@@ -4,25 +4,35 @@ import java.time.LocalDateTime;
 
 public class Invoice {
 
-    private String paymentInfo;
+    private String regNr;
+    private String kontoNr;
     private LocalDateTime paymentDate;
-    private String Type;
+    private Sale saleInfo;
 
     public Invoice() {
     }
 
-    public Invoice(String paymentInfo, LocalDateTime paymentDate) {
-        this.paymentInfo = paymentInfo;
-        this.paymentDate = paymentDate;
+    public Invoice(Sale saleInfo) {
+        regNr = "1234";
+        kontoNr = "112233445566";
+        paymentDate = LocalDateTime.now().plusDays(30);
+        this.saleInfo = saleInfo;
     }
 
-
-    public String getPaymentInfo() {
-        return paymentInfo;
+    public String getRegNr() {
+        return regNr;
     }
 
-    public void setPaymentInfo(String paymentInfo) {
-        this.paymentInfo = paymentInfo;
+    public void setRegNr(String regNr) {
+        this.regNr = regNr;
+    }
+
+    public String getKontoNr() {
+        return kontoNr;
+    }
+
+    public void setKontoNr(String kontoNr) {
+        this.kontoNr = kontoNr;
     }
 
     public LocalDateTime getPaymentDate() {
@@ -33,7 +43,12 @@ public class Invoice {
         this.paymentDate = paymentDate;
     }
 
-    public String getType() { return Type; }
 
-    public void setType(String type) { Type = type; }
+    public Sale getSaleInfo() {
+        return saleInfo;
+    }
+
+    public void setSaleInfo(Sale saleInfo) {
+        this.saleInfo = saleInfo;
+    }
 }
