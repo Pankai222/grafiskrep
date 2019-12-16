@@ -1,9 +1,12 @@
 package dat19v2.projektgrafiskrep.grafiskrep.databaseservice;
 
+import dat19v2.projektgrafiskrep.grafiskrep.model.Machine;
 import dat19v2.projektgrafiskrep.grafiskrep.model.pos.RepairType;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class RepairTypeDAO {
     // NOTE: I would strongly advise for using more specific exceptions
@@ -37,5 +40,27 @@ public class RepairTypeDAO {
     }
 
     public void select() {
+    }
+
+    public ArrayList<RepairType> selectAll() {
+        ArrayList<RepairType> repairTypes = new ArrayList<>();
+        String sql = "SELECT * FROM repairtypes";
+
+        try ( Connection con = DatabaseAdapter.getConnection();
+              PreparedStatement ps  = con.prepareStatement( sql );
+              ResultSet rs = ps.executeQuery() )
+        {
+            while ( rs.next() ) {
+                RepairType repairType = new RepairType();
+                repairType.setName( rs.getString( "name" ) );
+                repairType.setPrice( rs.getInt( "Price" ) );
+
+                repairTypes.add( repairType );
+            }
+        } catch ( Exception ex ) {
+            System.err.println( "ERROR: " + ex );
+        }
+
+        return repairTypes;
     }
 }

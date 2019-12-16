@@ -24,7 +24,7 @@ public class CatalogueController {
         catalogue.setItems(new MachinePartDAO().selectAll());
         return catalogue;
     }
-//    This is for later use, might refractor to use this for switching to thymeleaf each
+
     @ModelAttribute("items")
     public ArrayList<MachinePart> items(){
         return new MachinePartDAO().selectAll();
@@ -37,8 +37,7 @@ public class CatalogueController {
 
     @ModelAttribute("sale")
     public Sale sale(){
-        Sale sale = new Sale();
-        return sale;
+        return new Sale();
     }
 
     @RequestMapping("/catalogue")

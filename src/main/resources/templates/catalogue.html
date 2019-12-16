@@ -11,7 +11,6 @@
   <title>GrafiskRep - Katalog</title>
 
   <!-- Bootstrap core CSS -->
-  <!--    TODO remove navbar classes from bootstrap.order and bootstrap.catalogue-->
   <link href="css/bootstrap.catalogue.css" rel="stylesheet">
   <link href="css/freelancer.css" rel="stylesheet">
   <!-- Custom fonts for this theme -->
@@ -37,7 +36,7 @@
           <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/repair_order">Reparation</a>
         </li>
         <li class="nav-item mx-0 mx-lg-1">
-          <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/service_order">Service</a>
+          <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/service_amount">Service</a>
         </li>
         <li class="nav-item mx-0 mx-lg-1">
           <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/catalogue">Køb Reservedele</a>
@@ -62,12 +61,13 @@
       <div class="col-lg-3">
 
         <h1 class="my-4">Køb Reservedele</h1>
-        <div class="list-group mb-4">
-          <tr th:each="machine : ${machines}">
-            <a href="#" class="list-group-item" th:text="${machine.getType()}">{thymeleaf.machine.name}</a>
-          </tr>
 
-        </div>
+<!--        <div class="list-group mb-4">-->
+<!--          <tr th:each="machine : ${machines}">-->
+<!--            <a href="#" class="list-group-item" th:text="${machine.getType()}">{thymeleaf.machine.name}</a>-->
+<!--          </tr>-->
+<!--        </div>-->
+<!--Machines with link to their parts-->
 
         <div class="card h-auto mb-4">
           <div class="card-body">
@@ -87,114 +87,23 @@
 
         <div class="row">
 
-          <div class="col-lg-4 col-md-6 mb-4">
+          <div class="col-lg-4 col-md-6 mb-4" th:each="MachinePart : ${items}">
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
               <div class="card-body">
-                  <h4 class="card-title" th:text="${catalogue.getItems().get(0).getName()}"></h4>
-                  <p class="text-sm-left" th:text="${catalogue.getItems().get(0).getPartNr()}"></p>
-                <h5 th:text="${catalogue.getItems().get(0).getPrice()} + DKK"></h5>
-                <p class="card-text" th:text="${catalogue.getItems().get(0).getDesc()}"></p>
+                <h4 class="card-title" th:text="${MachinePart.getName()}"></h4>
+                <p class="text-sm-left" th:text="${MachinePart.getPartNr()}"></p>
+                <h5 th:text="${MachinePart.getPrice()} + DKK"></h5>
+                <p class="card-text" th:text="${MachinePart.getDesc()}"></p>
               </div>
               <div class="card-footer">
                 <form action="#" th:action="@{/add-to-cart}" method="post">
-                  <input hidden="true" name="itemIndex" th:value="${0}">
+                  <input hidden="true" name="itemIndex" th:value="${items.indexOf(MachinePart)}">
                   <button class="btn btn-sm btn-outline-dark" type="submit">Tilføj til kurv</button>
                 </form>
               </div>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                  <h4 class="card-title" th:text="${catalogue.getItems().get(1).getName()}"></h4>
-                  <p class="text-sm-left" th:text="${catalogue.getItems().get(1).getPartNr()}"></p>
-                <h5 th:text="${catalogue.getItems().get(1).getPrice()} + DKK"></h5>
-                <p class="card-text" th:text="${catalogue.getItems().get(1).getDesc()}"></p>
-              </div>
-              <div class="card-footer">
-                <form action="#" th:action="@{/add-to-cart}" method="post">
-                  <input hidden="true" name="itemIndex" th:value="${1}">
-                  <button class="btn btn-sm btn-outline-dark" type="submit">Tilføj til kurv</button>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                  <h4 class="card-title" th:text="${catalogue.getItems().get(2).getName()}"></h4>
-                  <p class="text-sm-left" th:text="${catalogue.getItems().get(2).getPartNr()}"></p>
-                <h5 th:text="${catalogue.getItems().get(2).getPrice()} + DKK"></h5>
-                <p class="card-text" th:text="${catalogue.getItems().get(2).getDesc()}"></p>
-              </div>
-              <div class="card-footer">
-                <form action="#" th:action="@{/add-to-cart}" method="post">
-                  <input hidden="true" name="itemIndex" th:value="${2}">
-                  <button class="btn btn-sm btn-outline-dark" type="submit">Tilføj til kurv</button>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                  <h4 class="card-title" th:text="${catalogue.getItems().get(3).getName()}"></h4>
-                  <p class="text-sm-left" th:text="${catalogue.getItems().get(3).getPartNr()}"></p>
-                <h5 th:text="${catalogue.getItems().get(3).getPrice()} + DKK"></h5>
-                <p class="card-text" th:text="${catalogue.getItems().get(3).getDesc()}"></p>
-              </div>
-              <div class="card-footer">
-                <form action="#" th:action="@{/add-to-cart}" method="post">
-                  <input hidden="true" name="itemIndex" th:value="${3}">
-                  <button class="btn btn-sm btn-outline-dark" type="submit">Tilføj til kurv</button>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                  <h4 class="card-title" th:text="${catalogue.getItems().get(4).getName()}"></h4>
-                  <p class="text-sm-left" th:text="${catalogue.getItems().get(5).getPartNr()}"></p>
-                <h5 th:text="${catalogue.getItems().get(4).getPrice()} + DKK"></h5>
-                <p class="card-text" th:text="${catalogue.getItems().get(4).getDesc()}"></p>
-              </div>
-              <div class="card-footer">
-                <form action="#" th:action="@{/add-to-cart}" method="post">
-                  <input hidden="true" name="itemIndex" th:value="${4}">
-                  <button class="btn btn-sm btn-outline-dark" type="submit">Tilføj til kurv</button>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-              <div class="card-body">
-                  <h4 class="card-title" th:text="${catalogue.getItems().get(5).getName()}"></h4>
-                  <p class="text-sm-left" th:text="${catalogue.getItems().get(5).getPartNr()}"></p>
-                <h5 th:text="${catalogue.getItems().get(5).getPrice()} + DKK"></h5>
-                <p class="card-text" th:text="${catalogue.getItems().get(5).getDesc()}"></p>
-              </div>
-              <div class="card-footer">
-                <form action="#" th:action="@{/add-to-cart}" method="post">
-                  <input hidden="true" name="itemIndex" th:value="${5}">
-                  <button class="btn btn-sm btn-outline-dark" type="submit">Tilføj til kurv</button>
-                </form>
-              </div>
-            </div>
-          </div>
-
         </div>
         <!-- /.row -->
 
@@ -232,8 +141,8 @@
 
       <!-- Footer About Text -->
       <div class="col-lg-4">
-        <h4 class="text-uppercase mb-4">Kontakt GrafikRep</h4>
-        <p class="lead mb-0">service@GrafikRep.dk</p>
+        <h4 class="text-uppercase mb-4">Kontakt GrafiskRep</h4>
+        <p class="lead mb-0">service@GrafiskRep.dk</p>
         <p class="lead mb-0">31 38 68 62</p>
       </div>
 
