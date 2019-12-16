@@ -23,6 +23,12 @@
     <link href="css/freelancer.css" rel="stylesheet">
     <link href="css/bootstrap.repair_order.css" rel="stylesheet">
 
+    <script type="text/javascript">
+        function clicked() {
+            alert('Reparation order modtaget');
+        }
+    </script>
+
 </head>
 <body>
 
@@ -67,35 +73,33 @@
         <div class="row">
 
             <div class="col-md-6 mb-3" th:object="${items}">
-                <select class="form-control" id="machine" name="machine" required>
+                <select class="form-control" id="machine" name="machineIndex" autofocus required>
                     <option value="">Vælg maskine: </option>
                     <option th:each="machine : ${items}"
-                            th:value="${machine.getModelNr()}"
+                            th:value="${items.indexOf(machine)}"
                             th:text="${machine.getType()}+' : '+${machine.getModelNr()}"></option>
-                    <option value="Ved ikke">Ved ikke</option>
                 </select>
             </div>
 
             <div class="col-md-6 mb-3">
-                <select class="form-control" id="RepairType" name="RepairType" required>
+                <select class="form-control" id="RepairType" name="repairtypeIndex" required>
                     <option value="">Vælg reparationstype: </option>
                     <option th:each="RepairType : ${repairTypes}"
-                            th:value="${RepairType.getName()}"
+                            th:value="${repairTypes.indexOf(RepairType)}"
                             th:text="${RepairType.getName()}+' : '+${RepairType.getPrice()}+'DKK'"></option>
-                    <option value="Ved ikke">Ved ikke</option>
                 </select >
             </div>
 
-            <label class="col-md-2" for="repairDate">Hvilken dato ønsker du reparation?</label>
+            <label class="col-md-2" for="repairDate">Hvilken dato og tid ønsker du reparation?</label>
 
-                <input type="date" name="repairDate" id="repairDate" required>
+                <input type="datetime-local" name="repairDate" id="repairDate" required>
                 <div class="invalid-feedback">
                     En dato er pækrævet.
                 </div>
 
         </div><br>
 
-        <h4 class="mb-3">Kundeplysninger</h4>
+        <h4 class="mb-3">Kundeloplysninger</h4>
 
         <div class="col-md-8 order-md-1" style="display: block;margin-left:
         auto; margin-right: auto">
@@ -168,7 +172,7 @@
             </div>
         </div>
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" id="submitButton" type="submit">Bestil Reparation</button>
+        <button class="btn btn-primary btn-lg btn-block" id="submitButton" onclick="clicked();" type="submit">Bestil Reparation</button>
 
     </form>
 </div>
