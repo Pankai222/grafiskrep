@@ -32,7 +32,6 @@ public class ServiceOrderController {
     public String getServiceAmount( HttpSession httpSession ) {
         String serviceAmount = (String) httpSession.getAttribute( "amount" );
         System.out.println( serviceAmount );
-
         return serviceAmount;
     }
 
