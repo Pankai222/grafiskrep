@@ -7,16 +7,16 @@ public class Invoice {
     private String regNr;
     private String kontoNr;
     private LocalDateTime paymentDate;
-    private String type;
+    private Sale saleInfo;
 
     public Invoice() {
     }
 
-    public Invoice(String type) {
-        this.type = type;
+    public Invoice(Sale saleInfo) {
         regNr = "1234";
         kontoNr = "112233445566";
         paymentDate = LocalDateTime.now().plusDays(30);
+        this.saleInfo = saleInfo;
     }
 
     public String getRegNr() {
@@ -43,7 +43,12 @@ public class Invoice {
         this.paymentDate = paymentDate;
     }
 
-    public String getType() { return type; }
 
-    public void setType(String type) { this.type = type; }
+    public Sale getSaleInfo() {
+        return saleInfo;
+    }
+
+    public void setSaleInfo(Sale saleInfo) {
+        this.saleInfo = saleInfo;
+    }
 }

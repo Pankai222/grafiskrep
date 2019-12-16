@@ -1,19 +1,12 @@
 package dat19v2.projektgrafiskrep.grafiskrep.controller;
 
-import dat19v2.projektgrafiskrep.grafiskrep.databaseservice.InvoiceDAO;
-import dat19v2.projektgrafiskrep.grafiskrep.databaseservice.SaleDAO;
-import dat19v2.projektgrafiskrep.grafiskrep.model.Customer;
 import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
-import dat19v2.projektgrafiskrep.grafiskrep.model.pos.Invoice;
 import dat19v2.projektgrafiskrep.grafiskrep.model.pos.Sale;
-import dat19v2.projektgrafiskrep.grafiskrep.model.pos.SalesInvoice;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Controller
