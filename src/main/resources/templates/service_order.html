@@ -62,17 +62,16 @@
     <!-- We default to 1 service if customer doesnt know -->
     <form class="needs-validation" method="post" action="/service_order">
 
-        <div th:if="${serviceAmount} == 'Ved ikke' or ${serviceAmount} == '1'">
+        <div th:if="${serviceAmount} == '1'">
             <select class="form-control" id="machine" name="machine1">
                 <option disabled selected>Vælg maskine:</option>
                 <option th:each="machine : ${items}"
                         th:value="${machine.getType()} + ' : ' + ${machine.getModelNr()}"
                         th:text="${machine.getType()} + ' : ' + ${machine.getModelNr()}"></option>
-                <option>Ved ikke</option>
             </select>
             <input type="datetime-local" name="date">
         </div>
-        <div th:unless="${serviceAmount} == 'Ved ikke' or ${serviceAmount} == '1'">
+        <div th:unless="${serviceAmount} == '1'">
             <div class="row"
                  th:each="amount : ${#numbers.sequence(1, serviceAmount)}"
                  th:name="machine + ${amount} + Index">
@@ -82,7 +81,6 @@
                     <option th:each="machine : ${items}"
                             th:value="${items.indexOf( machine )}"
                             th:text="${machine.getType()} + ' : ' + ${machine.getModelNr()}"></option>
-                    <option>Ved ikke</option>
                 </select>
                 <input type="datetime-local" th:name="date + ${amount}">
             </div><br>

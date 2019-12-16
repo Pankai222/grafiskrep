@@ -76,6 +76,7 @@ public class ServiceOrderController {
         LocalDateTime date2Time = null;
         LocalDateTime date3Time = null;
         LocalDateTime date4Time = null;
+
         if ( date1 != null ) {
             date1Time = LocalDateTime.parse( date1 );
         }
