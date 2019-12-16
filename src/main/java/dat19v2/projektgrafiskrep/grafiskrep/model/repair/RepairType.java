@@ -1,4 +1,4 @@
-package dat19v2.projektgrafiskrep.grafiskrep.model.pos;
+package dat19v2.projektgrafiskrep.grafiskrep.model.repair;
 
 public class RepairType {
     private String name;

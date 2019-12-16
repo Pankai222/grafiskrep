@@ -66,7 +66,7 @@
             <select class="form-control" id="machine" name="machine1">
                 <option disabled selected>Vælg maskine:</option>
                 <option th:each="machine : ${items}"
-                        th:value="${machine.getType()} + ' : ' + ${machine.getModelNr()}"
+                        th:value="${items.indexOf( machine )}"
                         th:text="${machine.getType()} + ' : ' + ${machine.getModelNr()}"></option>
             </select>
             <input type="datetime-local" name="date">
