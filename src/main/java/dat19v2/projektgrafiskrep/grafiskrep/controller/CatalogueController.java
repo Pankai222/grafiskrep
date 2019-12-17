@@ -48,16 +48,15 @@ public class CatalogueController {
         httpSession.setAttribute("catalogue", catalogue);
         return "catalogue";
     }
-
     //    This method is what enables the catalogue view to add machinepart items to a cart.
     //    The page is reloaded each time, as the client needs to connect to server, to get the updated sale object.
     @PostMapping ("add-to-cart")
-    public String addToCart(@ModelAttribute("catalogue") Catalogue catalogue, Model model, HttpSession httpSession, int itemIndex){
+    public String addToCart(@ModelAttribute("catalogue") Catalogue catalogue, Model model,
+                            HttpSession httpSession, int itemIndex){
         Sale sale = (Sale) httpSession.getAttribute("sale");
         sale.getItems().add(catalogue.getItems().get(itemIndex));
         sale.calcTotalPrice();
         model.addAttribute("sale", sale);
-        model.addAttribute("catalogue", httpSession.getAttribute("catalogue"));
         httpSession.setAttribute("sale", sale);
         return "catalogue";
     }
