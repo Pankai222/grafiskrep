@@ -4,10 +4,12 @@ import dat19v2.projektgrafiskrep.grafiskrep.model.Admin;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.List;
 
-public class AdminDAO {
+public abstract class AdminDAO implements IDAO{
 
     public void insert(Admin admin) {
+
         String sql = "INSERT INTO admin" + "(Password)" + "VALUES (?)";
 
         try (Connection con =
@@ -22,4 +24,23 @@ public class AdminDAO {
         }
     }
 
+    @Override
+    public List selectAll() {
+        return null;
+    }
+
+    @Override
+    public void delete() {
+
+    }
+
+    @Override
+    public void update() {
+
+    }
+
+    @Override
+    public void select() {
+
+    }
 }

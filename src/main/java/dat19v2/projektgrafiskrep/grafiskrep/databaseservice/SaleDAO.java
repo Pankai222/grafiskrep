@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 
-public class SaleDAO {
+public abstract class SaleDAO {
 
 //Inserts into 3 tables. The Customer, then the sale with the customer id as foreign key,
 // and finally into the bridge many to many table between sales and machineparts.

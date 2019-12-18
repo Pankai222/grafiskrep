@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.DriverManager;
 
-public class DatabaseAdapter {
+public abstract class DatabaseAdapter {
 
     private static Connection con;
 

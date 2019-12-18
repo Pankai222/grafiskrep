@@ -5,7 +5,7 @@ import dat19v2.projektgrafiskrep.grafiskrep.model.service.Service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-public class ServiceDAO {
+public abstract class ServiceDAO {
 
     public void insert(Service service) {
         String sql = "INSERT INTO services" + "(Date)" + "VALUES(?)";

@@ -5,7 +5,7 @@ import dat19v2.projektgrafiskrep.grafiskrep.model.service.ServiceContract;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-public class ServiceContractDAO {
+public abstract class ServiceContractDAO {
 
 //    Inserts a servicecontract object into the database.
     public void insert(ServiceContract serviceContract) {

@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MachineDAO {
+public abstract class MachineDAO {
     public void insert(Machine machine) {
         String sql = "INSERT INTO machines" + "(Type, Brand, ModelNr, Description, SerialNr)" +
                 "VALUES (?,?,?,?,?)";

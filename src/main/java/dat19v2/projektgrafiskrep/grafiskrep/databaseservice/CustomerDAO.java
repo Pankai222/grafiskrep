@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CustomerDAO {
+public abstract class CustomerDAO {
 
     // Selecting all content from table and adding to customers arraylist via query resultset
     public List<Customer> selectAll() {

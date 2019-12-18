@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 
-public class ServiceContractOrderDAO {
+public abstract class ServiceContractOrderDAO {
 
     public void insert(ServiceContractOrder SCO) {
         String sql1 = "INSERT INTO customers" + "(CVR, Name, Address, Phone, Email)" + "VALUES" +

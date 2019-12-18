@@ -1,42 +1,32 @@
 package dat19v2.projektgrafiskrep.grafiskrep.controller;
 
-import dat19v2.projektgrafiskrep.grafiskrep.databaseservice.CustomerDAO;
 import dat19v2.projektgrafiskrep.grafiskrep.databaseservice.MachineDAO;
-import dat19v2.projektgrafiskrep.grafiskrep.databaseservice.ServiceContractDAO;
 import dat19v2.projektgrafiskrep.grafiskrep.databaseservice.ServiceContractOrderDAO;
 import dat19v2.projektgrafiskrep.grafiskrep.model.Customer;
 import dat19v2.projektgrafiskrep.grafiskrep.model.Machine;
 import dat19v2.projektgrafiskrep.grafiskrep.model.service.Service;
-import dat19v2.projektgrafiskrep.grafiskrep.model.service.ServiceContract;
 import dat19v2.projektgrafiskrep.grafiskrep.model.service.ServiceContractOrder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.thymeleaf.util.StringUtils;
-
 import javax.servlet.http.HttpSession;
-import java.lang.reflect.Array;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+//Controller for the service_order page.
 @Controller
 public class ServiceOrderController {
+    //    returns the service_order file, when /service_order is requested
     @RequestMapping( "/service_order" )
     public String serviceOrder() {
         return "service_order";
     }
-
+//    adds the attribute "serviceamount" to the model
+//    instantiates a serviceamount which is fetched from the httpsession and finally returned at the end of the method.
     @ModelAttribute( "serviceAmount" )
     public String getServiceAmount( HttpSession httpSession ) {
-        String serviceAmount = (String) httpSession.getAttribute( "amount" );
-        System.out.println( serviceAmount );
-
-        return serviceAmount;
+        return (String) httpSession.getAttribute( "amount" );
     }
 
     @ModelAttribute( "items" )

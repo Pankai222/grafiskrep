@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class GrafikRepDAO {
+public abstract class GrafikRepDAO {
 
     public void insert(GrafiskRep grafiskRep) {
         String sql = "INSERT INTO grafiskRep" + "(CVR, Address, PhoneNr, Email)" + "VALUES " +

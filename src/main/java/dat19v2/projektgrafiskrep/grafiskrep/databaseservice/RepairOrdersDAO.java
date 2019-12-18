@@ -5,7 +5,7 @@ import dat19v2.projektgrafiskrep.grafiskrep.model.repair.Repair;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-public class RepairOrdersDAO {
+public abstract class RepairOrdersDAO {
 
 
     public void insert(Repair repair) {

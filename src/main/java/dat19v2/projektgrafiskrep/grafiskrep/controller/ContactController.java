@@ -5,18 +5,12 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import java.util.Properties;
 
-// NOTE: YOU HAVE TO ENABLE LESS SECURE APPS ON THE GMAIL ACCOUNT YOU ARE
-// SENDING FROM, ELSE GOOGLE WONT ALLOW IT TO GO THROUGH AND ENABLE IMAP(gives access to gmail through other clients)
-// FOUND ON SETTINGS PAGE ON YOUR GMAIL ACCOUNT
-
-// NOTE: upper limit of 2000 messages per day
-// NOTE: smtp = simple mail transfer protocol
-// NOTE: imap = internet message access protocol
+//Controller for the contact page.
 @Controller
 public class ContactController {
+//    returns the contact html file when /contact is requested
     @RequestMapping("/contact")
     public String contact(){
         return "contact";

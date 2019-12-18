@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class RepairTypeDAO {
+public abstract class RepairTypeDAO {
 
     // inserts repair types into the database
     public void insert(RepairType repairType ) {

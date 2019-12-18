@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
+//Controller for the repairorder page.
 @Controller
 public class RepairOrderController {
-
+//    returns the repair_order file, when /repair_order is requested
     @RequestMapping("/repair_order")
     public String repairOrder(){
         return "repair_order";
@@ -34,18 +34,14 @@ public class RepairOrderController {
         return new RepairTypeDAO().selectAll();
     }
 
-
     @PostMapping( "submit-order" )
-    public String sendOrder(Model model, String repairDate, int repairtypeIndex, int machineIndex, String firstName, String lastName, String phoneNr, String cvr,
+    public String sendOrder(Model model, String repairDate, int repairtypeIndex, int machineIndex, String firstName,
+                            String lastName, String phoneNr, String cvr,
                             String email, String address, String postNr, String comment) {
 
-        Customer customer = new Customer(cvr, firstName+" "+lastName, address, phoneNr, email);
-
-        RepairType repairType = repairTypes().get(repairtypeIndex);
-
-        Machine machine = items().get(machineIndex);
-        Repair repair = new Repair(repairType, machine, customer, LocalDateTime.parse(repairDate));
-
+        Repair repair = new Repair(repairTypes().get(repairtypeIndex), items().get(machineIndex),
+                new Customer(cvr, firstName+" "+lastName, address, phoneNr, email),
+                LocalDateTime.parse(repairDate));
 
         RepairOrdersDAO repairOrdersDAO = new RepairOrdersDAO();
 

@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 
-public class MachinePartDAO {
+public abstract class MachinePartDAO {
 
     public void insert(MachinePart machinePart) {
         String sql = "INSERT INTO machineParts" + "(Brand, Name, Price, PartNr, Description)" +

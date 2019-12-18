@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
-
+//Controller for the catalogue page.
 @Controller
 public class CatalogueController {
 
