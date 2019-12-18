@@ -2,7 +2,6 @@ package dat19v2.projektgrafiskrep.grafiskrep.databaseservice;
 
 import dat19v2.projektgrafiskrep.grafiskrep.model.pos.Sale;
 import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
