@@ -1,3 +1,5 @@
+// Skevet af Andreas Wede Gustavsen
+
 package dat19v2.projektgrafiskrep.grafiskrep.controller;
 
 import org.springframework.mail.SimpleMailMessage;
