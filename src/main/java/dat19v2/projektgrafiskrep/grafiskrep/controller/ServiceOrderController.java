@@ -1,3 +1,5 @@
+// skrevet af Andreas Wede Gustavsen med hjaelp fra Niklas Lund Brock
+
 package dat19v2.projektgrafiskrep.grafiskrep.controller;
 
 import dat19v2.projektgrafiskrep.grafiskrep.databaseservice.MachineDAO;
