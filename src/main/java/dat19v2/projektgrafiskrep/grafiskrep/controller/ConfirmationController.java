@@ -34,8 +34,7 @@ public class ConfirmationController {
         Invoice invoice = new Invoice(sale);
         httpSession.setAttribute("invoice", invoice);
         model.addAttribute("invoice", invoice);
-        SaleDAO saleDAO = new SaleDAO();
-        saleDAO.insert(sale);
+        SaleDAO.insert(sale);
         return "/confirmation";
     }
 }

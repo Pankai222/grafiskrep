@@ -25,13 +25,13 @@ public class RepairOrderController {
     //Adds the model Machines, which returns an arraylist of machines from database, for use with thymeleaf.
     @ModelAttribute( "items" )
     ArrayList<Machine> items() {
-        return new MachineDAO().selectAll();
+        return MachineDAO.selectAll();
     }
 
     //Adds the model repairtypes, which returns an arraylist of repairtypes from database, for use with thymeleaf.
     @ModelAttribute( "repairTypes" )
     ArrayList<RepairType> repairTypes() {
-        return new RepairTypeDAO().selectAll();
+        return RepairTypeDAO.selectAll();
     }
 
     @PostMapping( "submit-order" )
@@ -43,10 +43,9 @@ public class RepairOrderController {
                 new Customer(cvr, firstName+" "+lastName, address, phoneNr, email),
                 LocalDateTime.parse(repairDate));
 
-        RepairOrdersDAO repairOrdersDAO = new RepairOrdersDAO();
 
         //Running the method from our DAO, so that
-        repairOrdersDAO.insert(repair);
+        RepairOrdersDAO.insert(repair);
 
         return "/repair_order";
     }

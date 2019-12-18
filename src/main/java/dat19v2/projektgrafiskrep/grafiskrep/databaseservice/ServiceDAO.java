@@ -5,9 +5,9 @@ import dat19v2.projektgrafiskrep.grafiskrep.model.service.Service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-public abstract class ServiceDAO {
+public abstract class ServiceDAO implements IDAO{
 
-    public void insert(Service service) {
+    public static void insert(Service service) {
         String sql = "INSERT INTO services" + "(Date)" + "VALUES(?)";
 
         try (Connection con = DatabaseAdapter.getConnection();
@@ -18,4 +18,7 @@ public abstract class ServiceDAO {
             System.out.println("Error:" + e);
         }
     }
+    public static void delete(){};
+    public static void update(){};
+    public static void selectAll(){};
 }

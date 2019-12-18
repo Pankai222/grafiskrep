@@ -31,7 +31,7 @@ public class ServiceOrderController {
 
     @ModelAttribute( "items" )
     ArrayList<Machine> items() {
-        return new MachineDAO().selectAll();
+        return MachineDAO.selectAll();
     }
 
     @PostMapping( "/service_order" )
