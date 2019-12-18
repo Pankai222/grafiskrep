@@ -29,13 +29,13 @@ public class ContactController {
      * @param phoneNr phone number of sender
      * @param message message to write in email
      **/
-    // TODO: add info validation on form input
     public void sendEmail( String name, String emailSender, String phoneNr,
                           String emailMessage ) {
 
-        final String TO = "<INSERT TO EMAIL ADDRESS HERE>";
-        final String FROM = "<INSERT FROM EMAIL ADDRESS HERE>";
-        final String PASSWORD = "<INSERT PASSWORD HERE>";
+        // NOTE: servicetest.grafiskrep@gmail.com password: tilfoersteeksamen
+        final String TO = "servicetest.grafiskrep@gmail.com";
+        final String FROM = "testingproductionstuff@gmail.com";
+        final String PASSWORD = "KEAfoersteeksamen";
         final String HOST = "smtp.gmail.com";
 
         JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
@@ -62,7 +62,7 @@ public class ContactController {
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo( TO );
-        message.setSubject( name + " oensker kontakt!" );
+        message.setSubject( name + " ønsker kontakt!" );
         message.setText( "Email: " + emailSender + "\n" +
                 "Phone number: " + phoneNr + "\n" +
                 emailMessage );
