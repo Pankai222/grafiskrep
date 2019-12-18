@@ -35,7 +35,6 @@ public class ServiceOrderController {
     }
 
     @PostMapping( "/service_order" )
-    // NOTE: maybe turn it into an Order object?
     public void sendOrder( HttpSession httpSession, String machine1Index,
                            String machine2Index, String machine3Index,
                            String machine4Index,
@@ -113,7 +112,7 @@ public class ServiceOrderController {
         }
         ServiceContractOrder SCO = new ServiceContractOrder( LocalDateTime.now(), services, customer );
 
-        new ServiceContractOrderDAO().insert( SCO );
+        ServiceContractOrderDAO.insert( SCO );
         /*
         System.out.format( "%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s\n", machine1,machine2,machine3,machine4, date1,date2,date3,date4, name, phoneNr,
                                                                cvr, email, address, postNr, comment );
