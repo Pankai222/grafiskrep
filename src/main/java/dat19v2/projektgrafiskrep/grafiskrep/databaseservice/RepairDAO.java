@@ -3,21 +3,20 @@ package dat19v2.projektgrafiskrep.grafiskrep.databaseservice;
 import dat19v2.projektgrafiskrep.grafiskrep.model.repair.Repair;
 
 //Used for admin page
-public class RepairDAO {
+public abstract class RepairDAO implements IDAO{
 
-    public void insert(Repair repair) {
+    public static void insert(Repair repair) {
     }
 
-    public void delete() {
+    public static void delete() {
     }
 
-    public void selectAll() {
-
-    }
-
-    public void select() {
+    public static void selectAll() {
 
     }
 
+    public static void select() {
+
+    }
 
 }

@@ -1,18 +1,17 @@
 package dat19v2.projektgrafiskrep.grafiskrep.databaseservice;
 
 import java.sql.Connection;
-import java.sql.SQLException;
 import java.sql.DriverManager;
 
-public class DatabaseAdapter {
+public class DatabaseAdapter implements IDAO{
 
     private static Connection con;
 
     // defining settings for connection to GrafiskRepDB
-    static final String username = "root";
-    static final String password = "rootkode";
+    final static String username = "root";
+    final static String password = "rootkode";
     //database-url including changing of timezone t/-=-o UTC
-    static final String url = "jdbc:mysql://localhost:3306/GrafiskRep?useUnicode=true" +
+    final static String url = "jdbc:mysql://localhost:3306/GrafiskRep?useUnicode=true" +
             "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
     public DatabaseAdapter(){}

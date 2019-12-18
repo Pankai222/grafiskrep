@@ -5,42 +5,8 @@ import dat19v2.projektgrafiskrep.grafiskrep.model.GrafiskRep;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
-public class GrafikRepDAO {
+public abstract class GrafikRepDAO implements IDAO{
 
-    public void insert(GrafiskRep grafiskRep) {
-        String sql = "INSERT INTO grafiskRep" + "(CVR, Address, PhoneNr, Email)" + "VALUES " +
-                "(?," +
-                "?,?,?)";
-
-        try (Connection con =
-                     DatabaseAdapter.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql))
-        {
-
-            ps.setString(1, grafiskRep.getCvr());
-            ps.setString(2, grafiskRep.getAddress());
-            ps.setString(3, grafiskRep.getPhoneNr());
-            ps.setString(4, grafiskRep.getEmail());
-            ps.executeUpdate();
-
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
-        }
-    }
-
-
-    public void delete(String CVR) {
-        String sql = "DELETE FROM grafiskRep WHERE CVR = ?";
-
-        try (Connection con = DatabaseAdapter.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1,CVR);
-            ps.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
-        }
-
-    }
+    public void update(){};
 }

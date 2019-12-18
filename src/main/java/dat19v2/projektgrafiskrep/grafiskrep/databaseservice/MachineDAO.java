@@ -8,8 +8,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MachineDAO {
-    public void insert(Machine machine) {
+public abstract class MachineDAO implements IDAO{
+
+    public static void insert(Machine machine) {
         String sql = "INSERT INTO machines" + "(Type, Brand, ModelNr, Description, SerialNr)" +
                 "VALUES (?,?,?,?,?)";
 
@@ -28,7 +29,7 @@ public class MachineDAO {
         }
     }
 
-    public void delete( String modelNr ) {
+    public static void delete( String modelNr ) {
         String sql = "DELETE FROM machines WHERE ModelNr = ?";
         try ( Connection con = DatabaseAdapter.getConnection();
               PreparedStatement ps = con.prepareStatement( sql ) )
@@ -41,7 +42,7 @@ public class MachineDAO {
     }
 
     // NOTE: when inputting method argument, spell as is in the DB
-    public void update( String whatToUpdate, String updateValue, String modelNr ) {
+    public static void update( String whatToUpdate, String updateValue, String modelNr ) {
         String sql = "UPDATE machines" + "SET " + "?" + " = ?" + " WHERE ModelNr = ?";
         try ( Connection con = DatabaseAdapter.getConnection();
               PreparedStatement ps = con.prepareStatement( sql ) )
@@ -55,7 +56,7 @@ public class MachineDAO {
         }
     }
 
-    public void select( String modelNr ) {
+    public static void select( String modelNr ) {
         String sql = "SELECT * FROM machines WHERE ModelNr = ?";
         try ( Connection con = DatabaseAdapter.getConnection();
               PreparedStatement ps = con.prepareStatement( sql ) )
@@ -76,7 +77,7 @@ public class MachineDAO {
         }
     }
 
-    public ArrayList<Machine> selectAll() {
+    public static ArrayList<Machine> selectAll() {
         ArrayList<Machine> machines = new ArrayList<>();
         String sql = "SELECT * FROM machines";
 

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
+//Controller for the confirmation page.
 @Controller
 public class ConfirmationController {
     //  Adds the model saleitems, which returns an arraylist of machineparts, for use with thymeleaf.
@@ -34,8 +34,7 @@ public class ConfirmationController {
         Invoice invoice = new Invoice(sale);
         httpSession.setAttribute("invoice", invoice);
         model.addAttribute("invoice", invoice);
-        SaleDAO saleDAO = new SaleDAO();
-        saleDAO.insert(sale);
+        SaleDAO.insert(sale);
         return "/confirmation";
     }
 }

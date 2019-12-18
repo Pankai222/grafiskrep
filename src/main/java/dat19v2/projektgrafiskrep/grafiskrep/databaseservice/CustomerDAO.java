@@ -5,12 +5,11 @@ import dat19v2.projektgrafiskrep.grafiskrep.model.Customer;
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class CustomerDAO {
+public abstract class CustomerDAO implements IDAO{
 
     // Selecting all content from table and adding to customers arraylist via query resultset
     public List<Customer> selectAll() {

@@ -8,9 +8,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 
-public class MachinePartDAO {
+public abstract class MachinePartDAO implements IDAO{
 
-    public void insert(MachinePart machinePart) {
+    public static void insert(MachinePart machinePart) {
         String sql = "INSERT INTO machineParts" + "(Brand, Name, Price, PartNr, Description)" +
                 "VALUES(?,?,?,?,?)";
 
@@ -28,7 +28,7 @@ public class MachinePartDAO {
         }
     }
 
-    public ArrayList<MachinePart> selectAll() {
+    public static ArrayList<MachinePart> selectAll() {
         ArrayList<MachinePart> partList = new ArrayList<>();
         String sql = "SELECT * FROM machineParts";
 
@@ -51,4 +51,6 @@ public class MachinePartDAO {
         }
         return partList;
     }
+    public static void delete(){};
+    public static void update(){};
 }

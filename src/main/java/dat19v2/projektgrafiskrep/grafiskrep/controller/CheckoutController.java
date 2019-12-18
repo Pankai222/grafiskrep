@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
-
+//Controller for the checkout page.
 @Controller
 public class CheckoutController {
     //  Adds the model saleitems, which returns an arraylist of machineparts, for use with thymeleaf.

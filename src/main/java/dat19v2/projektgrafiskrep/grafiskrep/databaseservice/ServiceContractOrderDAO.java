@@ -7,9 +7,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 
-public class ServiceContractOrderDAO {
+public class ServiceContractOrderDAO implements IDAO{
 
-    public void insert(ServiceContractOrder SCO) {
+    public static void insert(ServiceContractOrder SCO) {
         String sql1 = "INSERT INTO customers" + "(CVR, Name, Address, Phone, Email)" + "VALUES" +
                 "(?,?,?,?,?)";
         String sql2 = "INSERT INTO serviceContractOrders(date, customers_idcustomers, machines_idmachines)" +
@@ -38,24 +38,7 @@ public class ServiceContractOrderDAO {
             System.out.println("Error: " + e);
         }
     }
-    /* Not sure if this is viable
-    public List<ServiceContractOrder> selectAll() {
-        List<ServiceContractOrder> serviceOrderList = new ArrayList<>();
-        String sql = "SELECT * FROM CUSTOMERS";
-        try (Connection con = DatabaseAdapter.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery()) {
-
-            while (rs.next()) {
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                ServiceContractOrder SVO = new ServiceContractOrder();
-                SVO.setDate(LocalDateTime.parse(rs.getString("Date"), formatter));
-
-
-            }
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
-        }
-        return serviceOrderList;
-    } */
+    public static void delete(){};
+    public static void update(){};
+    public static void selectAll(){};
 }
