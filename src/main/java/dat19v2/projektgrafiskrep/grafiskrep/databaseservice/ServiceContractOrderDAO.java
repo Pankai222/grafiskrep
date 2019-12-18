@@ -12,7 +12,7 @@ public class ServiceContractOrderDAO {
     public void insert(ServiceContractOrder SCO) {
         String sql1 = "INSERT INTO customers" + "(CVR, Name, Address, Phone, Email)" + "VALUES" +
                 "(?,?,?,?,?)";
-        String sql2 = "INSERT INTO serviceContractOrders" +
+        String sql2 = "INSERT INTO servicecontractorders" +
                 "(customers_idcustomers, date, machines_idmachines)" +
                 "SELECT LAST_INSERT_ID(), ?, idmachines FROM machines WHERE " +
                 "ModelNr = ?";
