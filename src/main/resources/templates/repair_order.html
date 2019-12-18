@@ -74,7 +74,7 @@
 
             <div class="col-md-6 mb-3" th:object="${items}">
                 <select class="form-control" id="machine" name="machineIndex" autofocus required>
-                    <option value="">Vælg maskine: </option>
+                    <option disabled value="">Vælg maskine: </option>
                     <option th:each="machine : ${items}"
                             th:value="${items.indexOf(machine)}"
                             th:text="${machine.getType()}+' : '+${machine.getModelNr()}"></option>
@@ -83,7 +83,7 @@
 
             <div class="col-md-6 mb-3">
                 <select class="form-control" id="RepairType" name="repairtypeIndex" required>
-                    <option value="">Vælg reparationstype: </option>
+                    <option disabled value="">Vælg reparationstype: </option>
                     <option th:each="RepairType : ${repairTypes}"
                             th:value="${repairTypes.indexOf(RepairType)}"
                             th:text="${RepairType.getName()}+' : '+${RepairType.getPrice()}+'DKK'"></option>

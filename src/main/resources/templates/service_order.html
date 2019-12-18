@@ -17,6 +17,7 @@
     <link href="css/bootstrap.order.css" rel="stylesheet">
     <link href="css/bootstrap.catalogue.css" rel="stylesheet">
     <link href="css/freelancer.css" rel="stylesheet">
+    <link href="css/bootstrap.repair_order.css" rel="stylesheet">
 
 </head>
 <body>
@@ -51,7 +52,6 @@
     </div>
 </nav>
 
-
 <!--Page Content-->
 <div class="page-section container">
     <div class="py-5 text-center">
@@ -62,29 +62,36 @@
     <!-- We default to 1 service if customer doesnt know -->
     <form class="needs-validation" method="post" action="/service_order">
 
+    <div class="col-md-8 order-md-1">
         <div th:if="${serviceAmount} == '1'">
-            <select class="form-control" id="machine" name="machine1">
+            <select class="form-control" id="machine" name="machine1" autofocus required>
                 <option disabled selected>Vælg maskine:</option>
                 <option th:each="machine : ${items}"
                         th:value="${items.indexOf( machine )}"
                         th:text="${machine.getType()} + ' : ' + ${machine.getModelNr()}"></option>
             </select>
-            <input type="datetime-local" name="date">
+            <label for="servicedate">Hvilken dato og tid ønsker du serviceaftale fra?</label>
+            <input type="datetime-local" name="date" id="servicedate" required>
         </div>
+    </div>
+
+    <div class="col-md-8 order-md-1">
         <div th:unless="${serviceAmount} == '1'">
             <div class="row"
                  th:each="amount : ${#numbers.sequence(1, serviceAmount)}"
                  th:name="machine + ${amount} + Index">
-                <h4 th:text="${amount}"></h4>
-                <select class="form-control" id="machines" th:name="machine + ${amount} + Index">
+                <h4 th:text="${'Maskine '+amount}"></h4>
+                <select class="form-control" id="machines" th:name="machine + ${amount} + Index" required>
                     <option disabled selected>Vælg maskine:</option>
                     <option th:each="machine : ${items}"
                             th:value="${items.indexOf( machine )}"
                             th:text="${machine.getType()} + ' : ' + ${machine.getModelNr()}"></option>
-                </select>
-                <input type="datetime-local" th:name="date + ${amount}">
-            </div><br>
+                </select><br><br>
+                <label for="servicedate1">Hvilken dato og tid ønsker du serviceaftale fra?</label>
+                <input type="datetime-local" id="servicedate1" th:name="date + ${amount}" required>
+            </div>
         </div>
+    </div><br>
 
         <h4 class="mb-3">Kundeoplysninger</h4>
         <div class="col-md-8 order-md-1" style="display: block;margin-left:

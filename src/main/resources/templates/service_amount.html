@@ -55,15 +55,17 @@
     </div>
     <form class="needs-validation" method="post" action="/service_amount">
     <!-- Shows numbers of services to choose -->
-    <select class="form-control" id="amount" name="amount">
-        <option disabled selected>Vælg antal service:</option>
+
+    <label for="amount">Vælg hvor mange maskiner du vil have en serviceaftale for:</label>
+    <select class="form-control" id="amount" name="amount" autofocus required>
+        <option disabled selected>Antal maskiner:</option>
         <option th:each="i : ${#numbers.sequence(1, 4)}" th:value="${i}"
                 th:text="${i}"></option>ser
         <option>Ved ikke</option>
     </select>
         <hr class="mb-4">
         <a href="service_order">
-        <button class="btn btn-primary btn-lg btn-block">Videresend antal service</button>
+        <button class="btn btn-primary btn-lg btn-block">Næste</button>
         </a>
     </form>
 </div>
