@@ -1,3 +1,4 @@
+//Kodet af Mikael
 package dat19v2.projektgrafiskrep.grafiskrep.databaseservice;
 
 import dat19v2.projektgrafiskrep.grafiskrep.model.pos.Sale;
@@ -7,11 +8,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 
-public class SaleDAO {
+public abstract class SaleDAO implements IDAO{
 
 //Inserts into 3 tables. The Customer, then the sale with the customer id as foreign key,
 // and finally into the bridge many to many table between sales and machineparts.
-    public void insert(Sale sale) {
+    public static void insert(Sale sale) {
         String sql1 = "INSERT INTO customers" + "(CVR, Name, Address, Phone, Email)" + "VALUES" +
                 "(?,?,?,?,?)";
         String sql2 = "INSERT INTO sales" + "(Date, TotalPrice, customers_idcustomers)" +
@@ -45,4 +46,7 @@ public class SaleDAO {
             System.out.println("Err0r: " + e);
         }
     }
+    public static void delete(){};
+    public static void update(){};
+    public static void selectAll(){};
 }

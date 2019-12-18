@@ -1,3 +1,4 @@
+//Kodet af Mikael
 package dat19v2.projektgrafiskrep.grafiskrep.databaseservice;
 
 import dat19v2.projektgrafiskrep.grafiskrep.model.repair.RepairType;
@@ -7,10 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class RepairTypeDAO {
+public abstract class RepairTypeDAO implements IDAO{
 
     // inserts repair types into the database
-    public void insert(RepairType repairType ) {
+    public static void insert(RepairType repairType ) {
         String sql = "INSERT INTO repairTypes" + "(Name, Price)" + "VALUES (?, ?)";
         try (Connection con = DatabaseAdapter.getConnection();
              PreparedStatement ps = con.prepareStatement( sql ) )
@@ -23,19 +24,19 @@ public class RepairTypeDAO {
         }
     }
 
-    public void delete() {
+    public static void delete() {
 
     }
 
-    public void update() {
+    public static void update() {
 
     }
 
-    public void select() {
+    public static void select() {
     }
 
 //Returns an arraylist of all the repairtypes in the database.
-    public ArrayList<RepairType> selectAll() {
+    public static ArrayList<RepairType> selectAll() {
         ArrayList<RepairType> repairTypes = new ArrayList<>();
         String sql = "SELECT * FROM repairtypes";
 

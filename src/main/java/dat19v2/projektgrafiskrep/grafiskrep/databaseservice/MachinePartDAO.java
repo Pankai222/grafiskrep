@@ -1,3 +1,4 @@
+//Kodet af Mikael
 package dat19v2.projektgrafiskrep.grafiskrep.databaseservice;
 
 import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
@@ -8,9 +9,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 
-public class MachinePartDAO {
-
-    public void insert(MachinePart machinePart) {
+public abstract class MachinePartDAO implements IDAO{
+    // Inserts a machinepart into database with all fields from model
+    public static void insert(MachinePart machinePart) {
         String sql = "INSERT INTO machineParts" + "(Brand, Name, Price, PartNr, Description)" +
                 "VALUES(?,?,?,?,?)";
 
@@ -27,8 +28,8 @@ public class MachinePartDAO {
             System.out.println("Error: " + e);
         }
     }
-
-    public ArrayList<MachinePart> selectAll() {
+    //Selects all from database and returns as arraylist
+    public static ArrayList<MachinePart> selectAll() {
         ArrayList<MachinePart> partList = new ArrayList<>();
         String sql = "SELECT * FROM machineParts";
 
@@ -51,4 +52,6 @@ public class MachinePartDAO {
         }
         return partList;
     }
+    public static void delete(){};
+    public static void update(){};
 }

@@ -1,3 +1,4 @@
+//Kodet af Mikael og Frederik
 package dat19v2.projektgrafiskrep.grafiskrep.databaseservice;
 
 import dat19v2.projektgrafiskrep.grafiskrep.model.repair.Repair;
@@ -5,20 +6,19 @@ import dat19v2.projektgrafiskrep.grafiskrep.model.repair.Repair;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-public class RepairOrdersDAO {
+public abstract class RepairOrdersDAO implements IDAO{
 
-
-    public void insert(Repair repair) {
+    //Inserter 2 ting ind i databasen, først en customer, så en repairorder
+    public static void insert(Repair repair) {
         String sql1 = "INSERT INTO customers" + "(CVR, Name, Address, Phone, Email)" + "VALUES" +
                 "(?,?,?,?,?)";
-        String sql2 = "INSERT INTO repairorders" + "(date, customers_idcustomers, machines_idmachines)" +
-                "VALUES (?, LAST_INSERT_ID(), SELECT idmachines FROM machines WHERE ModelNr = ?)";
-        String sql3 = "INSERT INTO repairorders" + "(date, customers_idcustomers, machines_idmachines)" +
+        String sql2 = "INSERT INTO repairorders" + "(date, customers_idcustomers, " +
+                "machines_idmachines)" +
                 "SELECT ?, LAST_INSERT_ID(), idmachines FROM machines WHERE ModelNr = ?";
 
         try (Connection con = DatabaseAdapter.getConnection();
              PreparedStatement customerPs = con.prepareStatement(sql1);
-             PreparedStatement repairOrderPs = con.prepareStatement(sql3))
+             PreparedStatement repairOrderPs = con.prepareStatement(sql2))
         {
 
             customerPs.setString(1,repair.getCustomer().getCvr());
@@ -36,4 +36,8 @@ public class RepairOrdersDAO {
             System.out.println("Err0r: " + e);
         }
     }
+    public static void delete(){};
+    public static void update(){};
+    public static void selectAll(){};
+
 }

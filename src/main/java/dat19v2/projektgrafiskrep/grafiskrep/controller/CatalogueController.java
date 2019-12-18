@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 
-
+//Controller for the catalogue page.
 @Controller
 public class CatalogueController {
 
@@ -23,18 +23,18 @@ public class CatalogueController {
     @ModelAttribute("catalogue")
     public Catalogue catalogue(){
         Catalogue catalogue = new Catalogue();
-        catalogue.setItems(new MachinePartDAO().selectAll());
+        catalogue.setItems(MachinePartDAO.selectAll());
         return catalogue;
     }
     //  Adds the model items, which returns an arraylist of machineparts from database, for use with thymeleaf.
     @ModelAttribute("items")
     public ArrayList<MachinePart> items(){
-        return new MachinePartDAO().selectAll();
+        return MachinePartDAO.selectAll();
     }
     //  Adds the model machines, which returns an arraylist of machines from database, for use with thymeleaf.
     @ModelAttribute("machines")
     public ArrayList<Machine> machines(){
-        return new MachineDAO().selectAll();
+        return MachineDAO.selectAll();
     }
     //    Adds the model sale, which returns a new sale object.
     @ModelAttribute("sale")

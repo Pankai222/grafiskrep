@@ -1,3 +1,4 @@
+//Kodet af Mikael
 package dat19v2.projektgrafiskrep.grafiskrep.databaseservice;
 
 import dat19v2.projektgrafiskrep.grafiskrep.model.service.Service;
@@ -5,9 +6,9 @@ import dat19v2.projektgrafiskrep.grafiskrep.model.service.Service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-public class ServiceDAO {
-
-    public void insert(Service service) {
+public abstract class ServiceDAO implements IDAO{
+    //Inserts a service into the database with a date
+    public static void insert(Service service) {
         String sql = "INSERT INTO services" + "(Date)" + "VALUES(?)";
 
         try (Connection con = DatabaseAdapter.getConnection();
@@ -18,4 +19,7 @@ public class ServiceDAO {
             System.out.println("Error:" + e);
         }
     }
+    public static void delete(){};
+    public static void update(){};
+    public static void selectAll(){};
 }
