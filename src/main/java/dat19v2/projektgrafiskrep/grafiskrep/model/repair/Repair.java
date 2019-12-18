@@ -1,11 +1,9 @@
-package dat19v2.projektgrafiskrep.grafiskrep.model.pos;
+package dat19v2.projektgrafiskrep.grafiskrep.model.repair;
 
 import dat19v2.projektgrafiskrep.grafiskrep.model.Customer;
 import dat19v2.projektgrafiskrep.grafiskrep.model.Machine;
-import dat19v2.projektgrafiskrep.grafiskrep.model.MachinePart;
+
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Repair {
     private RepairType type;

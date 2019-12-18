@@ -1,7 +1,6 @@
 package dat19v2.projektgrafiskrep.grafiskrep.databaseservice;
 
-import dat19v2.projektgrafiskrep.grafiskrep.model.Machine;
-import dat19v2.projektgrafiskrep.grafiskrep.model.pos.RepairType;
+import dat19v2.projektgrafiskrep.grafiskrep.model.repair.RepairType;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
