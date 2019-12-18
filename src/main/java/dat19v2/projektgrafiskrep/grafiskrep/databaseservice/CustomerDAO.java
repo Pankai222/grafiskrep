@@ -1,3 +1,4 @@
+// Kodet af Mikael
 package dat19v2.projektgrafiskrep.grafiskrep.databaseservice;
 
 import dat19v2.projektgrafiskrep.grafiskrep.model.Customer;
@@ -56,7 +57,7 @@ public abstract class CustomerDAO implements IDAO{
         }
     }
 
-
+    // sletter en række ud fra cvr-field
     public void delete(String CVR) {
         String sql = "DELETE FROM customers WHERE CVR = ?";
         try (Connection con =
@@ -69,42 +70,13 @@ public abstract class CustomerDAO implements IDAO{
             System.out.println("Error: " + e);
         }
     }
-    // Doesn't work as intended yet..
-    public void update(String updateField, String newValue, String CVR) {
-        String sql = "UPDATE customers " +
-                "SET ? = ? " +
-                "WHERE CVR = ?";
-        try (Connection con =
-                     DatabaseAdapter.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setString(1,updateField);
-            ps.setString(2, newValue);
-            ps.setString(3, CVR);
-            ps.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
-        }
+
+    public void update() {
     }
 
     // doesn't work yet
     public void select() {
-        String sql = "SELECT CVR, Name, Address, Phone, Email FROM customers WHERE CVR = ?";
 
-        try (Connection con =
-                DatabaseAdapter.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
-            ps.setString(1, "12345");
-            while (rs.next()) {
-                String CVR = rs.getString("CVR");
-                String Name = rs.getString("Name");
-                String Address = rs.getString("Address");
-                String Phone = rs.getString("Phone");
-                String Email = rs.getString("Email");
-                System.out.format("%s,%s,%s,%s,%s\n", CVR, Name, Address, Phone, Email);
-            }
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
         }
     }
-}
+

@@ -1,3 +1,4 @@
+// Kodet af Mikael
 package dat19v2.projektgrafiskrep.grafiskrep.databaseservice;
 
 import dat19v2.projektgrafiskrep.grafiskrep.model.service.Service;
@@ -8,6 +9,8 @@ import java.sql.PreparedStatement;
 
 
 public class ServiceContractOrderDAO implements IDAO{
+//Inserts into 2 tables. The customers, then the servicecontractorders with the customer id and
+// machine id as foreign keys
 
     public static void insert(ServiceContractOrder SCO) {
         String sql1 = "INSERT INTO customers" + "(CVR, Name, Address, Phone, Email)" + "VALUES" +
